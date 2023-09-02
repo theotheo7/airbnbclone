@@ -6,7 +6,7 @@ export async function createListing(listing:Listing) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YXNhcmFza2FtIiwiaWF0IjoxNjkxNzQ4NDcxLCJleHAiOjE2OTE3NDk5MTF9.-amQyRGcvwd2htAVuEgrOoypkL0gDNZr6iirB3I1ONY'
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YXNhcmFza2FtIiwiaWF0IjoxNjkzNTY1NTQ3LCJleHAiOjE2OTM1NjY5ODd9.w37I3sKa-tshk6iffMWkTrXae_Xq_CvmQQIOpf6Wc5Q'
         },
         body: JSON.stringify(listing)
     })
