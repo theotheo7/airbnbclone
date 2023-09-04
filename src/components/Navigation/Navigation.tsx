@@ -3,13 +3,12 @@ import './Navigation.css';
 import {DefaultButton, TextField} from "@fluentui/react";
 import {useLocation} from "react-router-dom";
 import {UserLogin} from "../../models/UserLogin";
-import {authenticate} from "../../services/Authentication";
-
-
+import {authenticate, getUsername, logout, storeUserInfo} from "../../services/Authentication";
 
 function Navigation() {
     const [Username, setUsername] = useState<string | undefined>("");
-    const [Password, setPassword] = useState<string | undefined>("")
+    const [Password, setPassword] = useState<string | undefined>("");
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const location = useLocation();
 
     function _onChangeUsername(
@@ -31,14 +30,19 @@ function Navigation() {
             const userLogin = new UserLogin(Username, Password);
             try {
                 const response = await authenticate(userLogin);
-
-                console.log(response);
+                storeUserInfo(Username, response["token"]);
+                setIsAuthenticated(true);
             } catch (err) {
                 console.log(err);
             } finally {
-                console.log("Success!");
+                console.log("Bye!");
             }
         }
+    }
+
+    function _onClickLogout() {
+        logout();
+        setIsAuthenticated(false);
     }
 
     return (
@@ -49,28 +53,39 @@ function Navigation() {
             {location.pathname === "/register" ?
                 <></>
                 :
-                <div className="login">
-                    <TextField
-                        label="Username"
-                        value={Username}
-                        onChange={_onChangeUsername}
-                    />
-                    <TextField
-                        type="password"
-                        label="Password"
-                        value={Password}
-                        onChange={_onChangePassword}
-                    />
-                    <div className="register-prompt">
-                        Not registered? Click <a href="https://localhost:8080/register">here</a> to register!
+                getUsername() !== null && isAuthenticated ?
+                    <div>
+                        Hello {getUsername()}!
+                        <DefaultButton
+                            text="Logout"
+                            label="Logout"
+                            onClick={_onClickLogout}
+                        />
                     </div>
-                    <DefaultButton
-                        className="login-button"
-                        text="Login"
-                        label="Login"
-                        onClick={_onClickLogin}
-                    />
-                </div>
+                :
+                    <div className="login">
+                        <TextField
+                            label="Username"
+                            value={Username}
+                            onChange={_onChangeUsername}
+                        />
+                        <TextField
+                            type="password"
+                            label="Password"
+                            value={Password}
+                            onChange={_onChangePassword}
+                        />
+                        <div className="register-prompt">
+                            Not registered? Click <a href="https://localhost:8080/register">here</a> to register!
+                        </div>
+                        <DefaultButton
+                            className="login-button"
+                            text="Login"
+                            label="Login"
+                            onClick={_onClickLogin}
+                        />
+                    </div>
+
             }
         </div>
     )

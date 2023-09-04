@@ -1,6 +1,15 @@
 import {UserLogin} from "../models/UserLogin";
 import ServiceEndpoints from "./ServiceEndpoints";
 
+export function storeUserInfo(username: string, jwt: string) {
+    sessionStorage.setItem("username", username);
+    sessionStorage.setItem("jwt", jwt);
+}
+
+export function getUsername() {
+    return sessionStorage.getItem("username");
+}
+
 export async function authenticate(userLogin:UserLogin) {
     return await fetch(ServiceEndpoints.Authenticate, {
         method: 'POST',
@@ -12,10 +21,14 @@ export async function authenticate(userLogin:UserLogin) {
         .then(async (resp) => {
             const response = await resp.json();
             console.log(response)
-            sessionStorage.setItem("token", response.token);
             return response;
         })
         .catch((error) => {
             console.log(error.message);
         });
+}
+
+export function logout() {
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("jwt");
 }
