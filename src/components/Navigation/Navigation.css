@@ -1,4 +1,5 @@
 .navigation-container {
+    position: relative;
     background-color: #fc0303;
     display: flex;
     flex-direction: row;
