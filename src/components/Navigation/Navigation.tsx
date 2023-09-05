@@ -48,7 +48,7 @@ function Navigation() {
     return (
         <div className="navigation-container">
             <div className="logo">
-                Airbnb Clone
+                <a href="https://localhost:8080"><img src={require("./logo.png")} alt="Logo"/></a>
             </div>
             {location.pathname === "/register" ?
                 <></>
