@@ -1,7 +1,18 @@
 package com.schoolproject.airbnbclone.models;
 
-public enum Role {
-    ADMIN,
-    HOST,
-    GUEST
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+public class Role {
+
+    @Id
+    @Column(nullable = false, name = "role_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false)
+    private String roleName;
+
 }

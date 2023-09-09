@@ -1,6 +1,5 @@
 package com.schoolproject.airbnbclone.services;
 
-import com.schoolproject.airbnbclone.models.Role;
 import com.schoolproject.airbnbclone.models.User;
 import com.schoolproject.airbnbclone.repositories.UserRepository;
 import com.schoolproject.airbnbclone.utils.AuthenticationRequest;
@@ -29,7 +28,7 @@ public class AuthenticationService {
                 .lastName(request.getLastName())
                 .phoneNumber(request.getPhoneNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.HOST)
+                .roles(request.getRoles())
                 .build();
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
