@@ -15,9 +15,13 @@ public class Listing {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    @Column(nullable = false)
+    private Integer id;
+
+    @Column(nullable = false)
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false)
     private Location location;
 }

@@ -2,7 +2,6 @@ package com.schoolproject.airbnbclone.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.lang.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,28 +18,29 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private Integer id;
 
-    @NonNull
+    @Column(nullable = false)
     private String username;
 
-    @NonNull
+    @Column(nullable = false)
     private String password;
 
-    @NonNull
+    @Column(nullable = false)
     private String email;
 
-    @NonNull
+    @Column(nullable = false)
     private String firstName;
 
-    @NonNull
+    @Column(nullable = false)
     private String lastName;
 
-    @NonNull
+    @Column(nullable = false)
     private String phoneNumber;
 
     @Enumerated(EnumType.ORDINAL)
-    @NonNull
+    @Column(nullable = false)
     private Role role;
 
     @Override
@@ -48,13 +48,11 @@ public class User implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    @NonNull
     @Override
     public String getUsername() {
         return username;
     }
 
-    @NonNull
     @Override
     public String getPassword() {
         return password;
