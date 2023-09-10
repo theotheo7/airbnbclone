@@ -2,18 +2,14 @@ package com.schoolproject.airbnbclone.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Listing {
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +17,10 @@ public class Listing {
     private Integer id;
 
     @Column(nullable = false)
-    private String name;
+    private String path;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
-    private Location location;
+    @ManyToOne
+    @JoinColumn(name = "listing_id", referencedColumnName = "id")
+    private Listing listing;
 
-    @OneToMany(mappedBy = "listing")
-    private Set<Image> images;
 }
