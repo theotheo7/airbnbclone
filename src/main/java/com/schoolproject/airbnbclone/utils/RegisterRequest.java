@@ -1,18 +1,12 @@
 package com.schoolproject.airbnbclone.utils;
 
-import com.schoolproject.airbnbclone.models.Role;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
+import java.io.Serializable;
+import java.util.List;
 
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class RegisterRequest {
+public class RegisterRequest implements Serializable {
 
     private String username;
     private String password;
@@ -20,6 +14,6 @@ public class RegisterRequest {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private HashSet<Role> roles;
+    private List<Integer> roles;
 
 }

@@ -17,7 +17,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, name = "user_id")
+    @Column(nullable = false)
     private Integer id;
 
     @Column(nullable = false)
@@ -38,11 +38,11 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private Set<Role> roles = new HashSet<>();
 
@@ -52,7 +52,7 @@ public class User implements UserDetails {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
         for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
         return authorities;

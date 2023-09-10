@@ -1,6 +1,8 @@
 package com.schoolproject.airbnbclone.services;
 
+import com.schoolproject.airbnbclone.models.Role;
 import com.schoolproject.airbnbclone.models.User;
+import com.schoolproject.airbnbclone.repositories.RoleRepository;
 import com.schoolproject.airbnbclone.repositories.UserRepository;
 import com.schoolproject.airbnbclone.utils.AuthenticationRequest;
 import com.schoolproject.airbnbclone.utils.AuthenticationResponse;
@@ -11,16 +13,21 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
 
     private final UserRepository repository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
+        Set<Role> roles = roleRepository.findAllDistinct(request.getRoles());
+
         var user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
@@ -28,7 +35,7 @@ public class AuthenticationService {
                 .lastName(request.getLastName())
                 .phoneNumber(request.getPhoneNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .roles(request.getRoles())
+                .roles(roles)
                 .build();
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);

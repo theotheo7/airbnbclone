@@ -34,10 +34,9 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .requiresChannel(channel ->
                         channel.anyRequest().requiresSecure())
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/v1/auth/**")
-                        .permitAll().anyRequest().authenticated())
                 .authorizeHttpRequests(request -> request.requestMatchers("/api/listing/**")
-                        .permitAll().anyRequest().hasAuthority("HOST"))
+                        .hasAuthority("HOST")
+                        .requestMatchers("api/v1/auth/**").permitAll().anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider).addFilterBefore(
                         jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
