@@ -27,6 +27,6 @@ public class Listing {
     @JoinColumn(nullable = false)
     private Location location;
 
-    @OneToMany(mappedBy = "listing")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "listing", cascade = CascadeType.ALL)
     private Set<Image> images;
 }

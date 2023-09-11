@@ -23,4 +23,8 @@ public class Image {
     @JoinColumn(name = "listing_id", referencedColumnName = "id")
     private Listing listing;
 
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
 }

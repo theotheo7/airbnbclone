@@ -4,6 +4,7 @@ import com.schoolproject.airbnbclone.dtos.listing.ListingRequest;
 import com.schoolproject.airbnbclone.services.ListingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/listing")
@@ -12,11 +13,14 @@ public class ListingController {
 
     private final ListingService listingService;
 
-    @PostMapping("/create")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public void createListing(
-            @RequestBody ListingRequest listingRequest
+            @RequestPart(name = "listing") ListingRequest listingRequest,
+            @RequestPart(name = "images", required = false) MultipartFile[] multipartFiles
             ) {
-         listingService.createListing(listingRequest);
+
+        listingService.createListing(listingRequest, multipartFiles);
+
     }
 
     @DeleteMapping("/delete")

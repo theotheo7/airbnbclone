@@ -7,6 +7,7 @@ import com.schoolproject.airbnbclone.utils.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -15,11 +16,12 @@ public class AuthenticationController {
 
     private final AuthenticationService service;
 
-    @PostMapping("/register")
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequest request
-    ) {
-        return ResponseEntity.ok(service.register(request));
+            @RequestPart(name = "user") RegisterRequest request,
+            @RequestPart(name = "image", required = false) MultipartFile multipartFile
+            ) {
+        return ResponseEntity.ok(service.register(request, multipartFile));
     }
 
     @PostMapping("/authenticate")

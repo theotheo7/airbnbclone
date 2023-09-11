@@ -7,11 +7,13 @@ import com.schoolproject.airbnbclone.repositories.UserRepository;
 import com.schoolproject.airbnbclone.utils.AuthenticationRequest;
 import com.schoolproject.airbnbclone.utils.AuthenticationResponse;
 import com.schoolproject.airbnbclone.utils.RegisterRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Set;
 
@@ -23,9 +25,11 @@ public class AuthenticationService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final ImageService imageService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    @Transactional
+    public AuthenticationResponse register(RegisterRequest request, MultipartFile multipartFile) {
         Set<Role> roles = roleRepository.findAllDistinct(request.getRoles());
 
         var user = User.builder()
@@ -38,6 +42,7 @@ public class AuthenticationService {
                 .roles(roles)
                 .build();
         repository.save(user);
+        this.imageService.uploadUserImage(user, multipartFile);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
