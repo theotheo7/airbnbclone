@@ -1,5 +1,7 @@
 package com.schoolproject.airbnbclone.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.schoolproject.airbnbclone.services.AuthenticationService;
 import com.schoolproject.airbnbclone.utils.AuthenticationRequest;
 import com.schoolproject.airbnbclone.utils.AuthenticationResponse;
@@ -18,9 +20,11 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestPart(name = "user") RegisterRequest request,
-            @RequestPart(name = "image", required = false) MultipartFile multipartFile
-            ) {
+            @RequestParam(name = "user") String user,
+            @RequestParam(name = "image", required = false) MultipartFile multipartFile
+            ) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        RegisterRequest request = mapper.readValue(user, RegisterRequest.class);
         return ResponseEntity.ok(service.register(request, multipartFile));
     }
 
