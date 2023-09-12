@@ -73,6 +73,7 @@ function Navigation() {
                             type="password"
                             label="Password"
                             value={Password}
+                            canRevealPassword={true}
                             onChange={_onChangePassword}
                         />
                         <div className="register-prompt">
@@ -83,6 +84,7 @@ function Navigation() {
                             text="Login"
                             label="Login"
                             onClick={_onClickLogin}
+                            style={{marginBottom: "5px"}}
                         />
                     </div>
 

@@ -1,27 +1,21 @@
 import "./Register.css"
-import {ChoiceGroup, IChoiceGroupOption, IChoiceGroupStyles, PrimaryButton, TextField} from "@fluentui/react";
-import React, {useState} from "react";
+import {Checkbox, PrimaryButton, Stack, TextField} from "@fluentui/react";
+import React, {ChangeEvent, useState} from "react";
 import {register, storeUserInfo} from "../../services/Authentication";
 import {UserRegister} from "../../models/UserRegister";
 
-const horizontalChoiceGroupStyles: IChoiceGroupStyles = {
-    flexContainer: { display: "flex", flexDirection: "row", columnGap: "4px"},
-};
-
-const roleOptions: IChoiceGroupOption[] = [
-    { key: "Guest", text: "Guest" },
-    { key: "Host", text: "Host" },
-    { key: "Both", text: "Both" },
-];
 
 function Register() {
-    const [username, setUsername] = useState<string | undefined>("");
-    const [email, setEmail] = useState<string | undefined>("");
-    const [firstName, setFirstName] = useState<string | undefined>("");
-    const [lastName, setLastName] = useState<string | undefined>("");
-    const [password, setPassword] = useState<string | undefined>("");
-    const [passwordConfirm, setPasswordConfirm] = useState<string | undefined>("");
-    const [phoneNumber, setPhoneNumber] = useState<string | undefined>("");
+    const [username, setUsername] = useState<string | undefined>(undefined);
+    const [email, setEmail] = useState<string | undefined>(undefined);
+    const [firstName, setFirstName] = useState<string | undefined>(undefined);
+    const [lastName, setLastName] = useState<string | undefined>(undefined);
+    const [password, setPassword] = useState<string | undefined>(undefined);
+    const [passwordConfirm, setPasswordConfirm] = useState<string | undefined>(undefined);
+    const [phoneNumber, setPhoneNumber] = useState<string | undefined>(undefined);
+    const [guest, setGuest] = useState<boolean>(false);
+    const [host, setHost] = useState<boolean>(false);
+    const [image, setImage] = useState<File>();
 
     function _onChangeUsername(
         _event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -72,11 +66,44 @@ function Register() {
         setPhoneNumber(newValue);
     }
 
+    function _onChangeGuest() {
+        setGuest(!guest);
+    }
+
+    function _onChangeHost() {
+        setHost(!host);
+    }
+
+    function _onChangeImage(
+        event: ChangeEvent<HTMLInputElement>
+    ) {
+        if (event.target.files) {
+            setImage(event.target.files[0]);
+        }
+    }
+
     async function _onClickRegister() {
-        if (username !== undefined && username !== "" && email !== undefined && firstName !== undefined && lastName !== undefined && password !== undefined && passwordConfirm !== undefined && phoneNumber !== undefined) {
-            const userRegister = new UserRegister(username, email, firstName, lastName, password, phoneNumber);
+        let roles: number[] = [];
+
+        if (guest) {
+            roles.push(2);
+        }
+
+        if (host) {
+            roles.push(3);
+        }
+
+        console.log(image);
+
+        if (username !== undefined && username !== "" && email !== undefined && firstName !== undefined && lastName !== undefined && password !== undefined && passwordConfirm !== undefined && phoneNumber !== undefined && image != null) {
+            const userRegister = new UserRegister(username, email, firstName, lastName, password, phoneNumber, roles);
+            const formData = new FormData();
+
+            formData.append("image", image, image.name);
+            formData.append("user", JSON.stringify(userRegister));
+
             try {
-                const response = await register(userRegister);
+                const response = await register(formData);
                 storeUserInfo(username, response["token"]);
                 window.alert("Successful registration! Please login.")
                 window.location.href = "https://localhost:8080/"
@@ -117,10 +144,12 @@ function Register() {
                 <div className="register-box-row">
                     <TextField
                         label="Password"
+                        type="password"
                         onChange={_onChangePassword}
                     />
                     <TextField
                         label="Confirm Password"
+                        type="password"
                         onChange={_onChangePasswordConfirm}
                     />
                 </div>
@@ -129,12 +158,16 @@ function Register() {
                         label="Phone Number"
                         onChange={_onChangePhoneNumber}
                     />
-                    <ChoiceGroup
-                        label="Role"
-                        options={roleOptions}
-                        styles={horizontalChoiceGroupStyles}/>
+                    <div className="role-container">
+                        Select Role:
+                        <Stack className="role-checkboxes">
+                            <Checkbox className="left-checkbox" label="Guest" onChange={_onChangeGuest}/>
+                            <Checkbox label="Host" onChange={_onChangeHost}/>
+                        </Stack>
+                    </div>
                 </div>
                 <div className="bottom-row-buttons">
+                    <input type="file" onChange={_onChangeImage}/>
                     <PrimaryButton
                         label="Register"
                         text="Register"
