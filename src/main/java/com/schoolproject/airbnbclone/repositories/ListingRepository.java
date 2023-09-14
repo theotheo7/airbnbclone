@@ -5,10 +5,11 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public interface ListingRepository extends JpaRepository<Listing, Integer> {
+public interface ListingRepository extends JpaRepository<Listing, Integer>, PagingAndSortingRepository<Listing, Integer> {
 
     @Transactional
     @Query("SELECT l FROM Listing l")
@@ -16,7 +17,7 @@ public interface ListingRepository extends JpaRepository<Listing, Integer> {
 
     @Modifying
     @Transactional
-    @Query("DELETE FROM Listing l WHERE l.Id = ?1")
+    @Query("DELETE FROM Listing l WHERE l.id = ?1")
     Integer removeListingById(Integer Id);
 
 }
