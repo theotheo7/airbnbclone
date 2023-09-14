@@ -34,16 +34,16 @@ public class ImageService {
         File uploadsDirectory = new File(directory);
 
         if (!uploadsDirectory.exists()) {
-            if (!uploadsDirectory.mkdir()) {
-                throw new RuntimeException();
+            if (!uploadsDirectory.mkdirs()) {
+                throw new RuntimeException("What the fck");
             }
         }
 
         File userDirectory = new File(directory + id + "/");
 
         if (!userDirectory.exists()) {
-            if (!userDirectory.mkdir()) {
-                throw new RuntimeException();
+            if (!userDirectory.mkdirs()) {
+                throw new RuntimeException("Giati den doulevei");
             }
         }
     }
@@ -51,12 +51,12 @@ public class ImageService {
     @Transactional
     public void uploadUserImage(User user, MultipartFile multipartFile) {
 
-        this.createDirectory(USER_UPLOADS_DIRECTORY, user.getId());
+        this.createDirectory(this.USER_UPLOADS_DIRECTORY, user.getId());
 
         if (multipartFile != null) {
 
             String fileName = multipartFile.getOriginalFilename();
-            String filePath = USER_UPLOADS_DIRECTORY + user.getId() + "/" + fileName;
+            String filePath = this.USER_UPLOADS_DIRECTORY + user.getId() + "/" + fileName;
 
             File file = new File(filePath);
 
@@ -89,7 +89,7 @@ public class ImageService {
             String PLACEHOLDER_IMAGE_PATH = "src/main/resources/PlaceholderImage.png";
             File placeholderFile = new File(PLACEHOLDER_IMAGE_PATH);
             String fileName = placeholderFile.getName();
-            String filePath = USER_UPLOADS_DIRECTORY + user.getId() + "/" + fileName;
+            String filePath = this.USER_UPLOADS_DIRECTORY + user.getId() + "/" + fileName;
             File userFile = new File(filePath);
             try {
                 Files.copy(placeholderFile.toPath(), userFile.toPath(), StandardCopyOption.REPLACE_EXISTING);

@@ -46,7 +46,7 @@ public class User implements UserDetails {
     )
     private Set<Role> roles = new HashSet<>();
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private Image image;
 
     @OneToMany(mappedBy = "user")

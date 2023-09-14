@@ -12,6 +12,7 @@ public class UserBasicDetails implements Serializable {
     private final String lastName;
     private final String phoneNumber;
     private final String username;
+    private final String image;
 
     public UserBasicDetails(User user) {
 
@@ -19,6 +20,7 @@ public class UserBasicDetails implements Serializable {
         this.lastName = user.getLastName();
         this.phoneNumber = user.getPhoneNumber();
         this.username = user.getUsername();
+        this.image = user.getImage().getPath();
 
     }
 
