@@ -49,6 +49,9 @@ public class User implements UserDetails {
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     private Image image;
 
+    @OneToMany(mappedBy = "user")
+    private List<Booking> bookings;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Role> roles = this.getRoles();
