@@ -1,4 +1,4 @@
-package com.schoolproject.airbnbclone.dtos.authentication;
+package com.schoolproject.airbnbclone.dtos.user.response;
 
 import lombok.*;
 
@@ -6,7 +6,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
+public class UserLoginResponse {
 
     private String token;
 

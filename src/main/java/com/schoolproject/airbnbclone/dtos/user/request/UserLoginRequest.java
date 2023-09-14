@@ -1,4 +1,4 @@
-package com.schoolproject.airbnbclone.dtos.authentication;
+package com.schoolproject.airbnbclone.dtos.user.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class UserLoginRequest {
 
     private String username;
     String password;

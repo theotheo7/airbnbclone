@@ -1,4 +1,4 @@
-package com.schoolproject.airbnbclone.dtos.authentication;
+package com.schoolproject.airbnbclone.dtos.user.request;
 
 import lombok.Data;
 
