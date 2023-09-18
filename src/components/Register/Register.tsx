@@ -3,6 +3,7 @@ import {Checkbox, PrimaryButton, Stack, TextField} from "@fluentui/react";
 import React, {ChangeEvent, useState} from "react";
 import {register} from "../../services/Authentication";
 import {UserRegister} from "../../models/UserRegister";
+import {useNavigate} from "react-router-dom";
 
 
 function Register() {
@@ -16,6 +17,8 @@ function Register() {
     const [guest, setGuest] = useState<boolean>(false);
     const [host, setHost] = useState<boolean>(false);
     const [image, setImage] = useState<File>();
+
+    const navigate = useNavigate();
 
     function _onChangeUsername(
         _event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -105,7 +108,7 @@ function Register() {
             try {
                 await register(formData);
                 window.alert("Successful registration! Please login.")
-                window.location.href = "https://localhost:8080/"
+                navigate("/");
             } catch (err) {
                 console.log(err);
                 window.alert("Something went wrong! Try again.")

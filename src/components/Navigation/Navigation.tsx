@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Navigation.css';
 import {DefaultButton, TextField} from "@fluentui/react";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {UserLogin} from "../../models/UserLogin";
 import {authenticate, getUsername, logout, storeUserInfo} from "../../services/Authentication";
 
@@ -9,6 +9,7 @@ function Navigation() {
     const [Username, setUsername] = useState<string | undefined>("");
     const [Password, setPassword] = useState<string | undefined>("");
     const location = useLocation();
+    const navigate = useNavigate();
 
     function _onChangeUsername(
         _event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -33,7 +34,7 @@ function Navigation() {
                 let roles = Object.values(response["roles"][0]);
                 console.log(roles);
                 if (sessionStorage.getItem("username") === "admin") {
-                    window.location.href = "https://localhost:8080/admin"
+                    navigate("/admin");
                 }
             } catch (err) {
                 console.log(err);
@@ -45,7 +46,7 @@ function Navigation() {
 
     function _onClickLogout() {
         logout();
-        window.location.href = "https://localhost:8080";
+        navigate("/");
     }
 
     return (
