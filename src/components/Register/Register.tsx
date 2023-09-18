@@ -1,7 +1,7 @@
 import "./Register.css"
 import {Checkbox, PrimaryButton, Stack, TextField} from "@fluentui/react";
 import React, {ChangeEvent, useState} from "react";
-import {register, storeUserInfo} from "../../services/Authentication";
+import {register} from "../../services/Authentication";
 import {UserRegister} from "../../models/UserRegister";
 
 
@@ -103,8 +103,7 @@ function Register() {
             formData.append("user", JSON.stringify(userRegister));
 
             try {
-                const response = await register(formData);
-                storeUserInfo(username, response["token"]);
+                await register(formData);
                 window.alert("Successful registration! Please login.")
                 window.location.href = "https://localhost:8080/"
             } catch (err) {

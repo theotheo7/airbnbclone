@@ -46,4 +46,5 @@ export async function authenticate(userLogin:UserLogin) {
 export function logout() {
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("jwt");
+    sessionStorage.removeItem("roles");
 }

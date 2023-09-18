@@ -8,7 +8,6 @@ import {authenticate, getUsername, logout, storeUserInfo} from "../../services/A
 function Navigation() {
     const [Username, setUsername] = useState<string | undefined>("");
     const [Password, setPassword] = useState<string | undefined>("");
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const location = useLocation();
 
     function _onChangeUsername(
@@ -31,7 +30,11 @@ function Navigation() {
             try {
                 const response = await authenticate(userLogin);
                 storeUserInfo(Username, response["token"]);
-                setIsAuthenticated(true);
+                let roles = Object.values(response["roles"][0]);
+                console.log(roles);
+                if (sessionStorage.getItem("username") === "admin") {
+                    window.location.href = "https://localhost:8080/admin"
+                }
             } catch (err) {
                 console.log(err);
             } finally {
@@ -42,7 +45,7 @@ function Navigation() {
 
     function _onClickLogout() {
         logout();
-        setIsAuthenticated(false);
+        window.location.href = "https://localhost:8080";
     }
 
     return (
@@ -53,7 +56,7 @@ function Navigation() {
             {location.pathname === "/register" ?
                 <></>
                 :
-                getUsername() !== null && isAuthenticated ?
+                getUsername() !== null ?
                     <div>
                         Hello {getUsername()}!
                         <DefaultButton
