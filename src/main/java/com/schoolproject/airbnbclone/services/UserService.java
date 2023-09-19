@@ -102,9 +102,7 @@ public class UserService {
     }
 
     public List<UserBasicDetails> getHostsForApproval() {
-        List<UserBasicDetails> list = userRepository.findAllHostsForApproval();
-        System.out.println(list);
-        return list;
+        return userRepository.findAllHostsForApproval();
     }
 
 }
