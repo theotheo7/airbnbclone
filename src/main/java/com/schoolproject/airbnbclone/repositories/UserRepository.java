@@ -9,16 +9,18 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Integer>, PagingAndSortingRepository<User, Integer> {
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer>, PagingAndSortingRepository<User, Integer>, CustomUserRepository {
 
     Optional<User> findByUsername(String username);
 
     @NonNull
     @Transactional
-    @Query("SELECT u From User u WHERE u.username != 'admin'")
+    @Query("SELECT u FROM User u WHERE u.username != 'admin'")
     Page<User> findAll(@NonNull Pageable pageable);
 
     @Transactional

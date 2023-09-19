@@ -101,4 +101,10 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public List<UserBasicDetails> getHostsForApproval() {
+        List<UserBasicDetails> list = userRepository.findAllHostsForApproval();
+        System.out.println(list);
+        return list;
+    }
+
 }

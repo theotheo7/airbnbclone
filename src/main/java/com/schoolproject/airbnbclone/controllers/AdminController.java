@@ -27,4 +27,9 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/users/approve", method = RequestMethod.GET)
+    public ResponseEntity<List<UserBasicDetails>> getHostsForApproval() {
+        return ResponseEntity.ok(userService.getHostsForApproval());
+    }
+
 }

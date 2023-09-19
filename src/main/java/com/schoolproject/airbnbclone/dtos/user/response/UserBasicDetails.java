@@ -1,11 +1,13 @@
 package com.schoolproject.airbnbclone.dtos.user.response;
 
 import com.schoolproject.airbnbclone.models.User;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
+@AllArgsConstructor
 public class UserBasicDetails implements Serializable {
 
     private final String firstName;
