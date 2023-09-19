@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.lang.NonNull;
@@ -19,5 +20,16 @@ public interface UserRepository extends JpaRepository<User, Integer>, PagingAndS
     @Transactional
     @Query("SELECT u From User u WHERE u.username != 'admin'")
     Page<User> findAll(@NonNull Pageable pageable);
+
+    @Transactional
+    Boolean existsByUsername(String username);
+
+    @Transactional
+    Boolean existsByEmail(String email);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE User u SET u.hostApproved = ?2 WHERE u.username = ?1")
+    Integer approveByUsername(String username, Boolean approvalStatus);
 
 }

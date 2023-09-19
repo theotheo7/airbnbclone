@@ -52,6 +52,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;
 
+    @Column(nullable = false)
+    private boolean hostApproved;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Role> roles = this.getRoles();

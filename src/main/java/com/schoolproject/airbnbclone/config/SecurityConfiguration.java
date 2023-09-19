@@ -35,7 +35,7 @@ public class SecurityConfiguration {
                 .requiresChannel(channel ->
                         channel.anyRequest().requiresSecure())
                 .authorizeHttpRequests(request -> request.requestMatchers("api/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/listing/**").hasAuthority("HOST")
+                        .requestMatchers("/api/host/**").hasAuthority("HOST")
                         .requestMatchers("api/v1/auth/**").permitAll().anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider).addFilterBefore(
