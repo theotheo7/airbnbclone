@@ -1,8 +1,9 @@
 import { Listing } from "../models/Listing";
 import ServiceEndpoints from "./ServiceEndpoints";
+import {getToken} from "./Authentication";
 
 export async function createListing(listing:Listing) {
-    const jwt = sessionStorage.getItem("token");
+    const jwt = getToken();
     return await fetch(ServiceEndpoints.CreateListing, {
         method: 'POST',
         headers: {

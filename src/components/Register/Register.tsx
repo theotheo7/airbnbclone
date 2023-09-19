@@ -96,13 +96,16 @@ function Register() {
             roles.push(3);
         }
 
-        console.log(image);
-
-        if (username !== undefined && username !== "" && email !== undefined && firstName !== undefined && lastName !== undefined && password !== undefined && passwordConfirm !== undefined && phoneNumber !== undefined && image != null) {
+        if (username !== undefined && username !== "" && email !== undefined && firstName !== undefined && lastName !== undefined && password !== undefined && passwordConfirm !== undefined && phoneNumber !== undefined) {
             const userRegister = new UserRegister(username, email, firstName, lastName, password, phoneNumber, roles);
             const formData = new FormData();
 
-            formData.append("image", image, image.name);
+            if (image === undefined) {
+                formData.append("image", "");
+            } else {
+                formData.append("image", image, image.name);
+            }
+
             formData.append("user", JSON.stringify(userRegister));
 
             try {

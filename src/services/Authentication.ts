@@ -1,13 +1,22 @@
 import {UserLogin} from "../models/UserLogin";
 import ServiceEndpoints from "./ServiceEndpoints";
 
-export function storeUserInfo(username: string, jwt: string) {
+export function storeUserInfo(username: string, jwt: string, roles: string[]) {
     sessionStorage.setItem("username", username);
     sessionStorage.setItem("jwt", jwt);
+    sessionStorage.setItem("roles", JSON.stringify(roles));
 }
 
 export function getUsername() {
     return sessionStorage.getItem("username");
+}
+
+export function getRoles() {
+    return sessionStorage.getItem("roles");
+}
+
+export function getToken() {
+    return sessionStorage.getItem("jwt");
 }
 
 export async function register(formData: FormData) {
@@ -17,7 +26,7 @@ export async function register(formData: FormData) {
     })
         .then(async (resp) => {
             const response = await resp.json();
-            console.log(response)
+            console.log(response);
             return response;
         })
         .catch((error) => {
@@ -34,9 +43,7 @@ export async function authenticate(userLogin:UserLogin) {
         body: JSON.stringify(userLogin)
     })
         .then(async (resp) => {
-            const response = await resp.json();
-            console.log(response)
-            return response;
+            return await resp.json();
         })
         .catch((error) => {
             console.log(error.message);

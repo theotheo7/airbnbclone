@@ -3,7 +3,7 @@ import './Navigation.css';
 import {DefaultButton, TextField} from "@fluentui/react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {UserLogin} from "../../models/UserLogin";
-import {authenticate, getUsername, logout, storeUserInfo} from "../../services/Authentication";
+import {authenticate, getRoles, getUsername, logout, storeUserInfo} from "../../services/Authentication";
 
 function Navigation() {
     const [Username, setUsername] = useState<string | undefined>("");
@@ -30,12 +30,22 @@ function Navigation() {
             const userLogin = new UserLogin(Username, Password);
             try {
                 const response = await authenticate(userLogin);
-                storeUserInfo(Username, response["token"]);
-                let roles = Object.values(response["roles"][0]);
-                console.log(roles);
-                if (sessionStorage.getItem("username") === "admin") {
-                    navigate("/admin");
+
+                let arr = [];
+                for (let role of response["roles"]) {
+                    arr.push(role.name);
                 }
+
+                storeUserInfo(Username, response["token"], arr);
+
+                if (getRoles()?.includes("ADMIN")) {
+                    navigate("/admin");
+                } else if (getRoles()?.includes("HOST")) {
+                    navigate("/host");
+                } else {
+                    navigate("/");
+                }
+
             } catch (err) {
                 console.log(err);
             } finally {
