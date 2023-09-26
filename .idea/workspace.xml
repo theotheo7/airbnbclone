@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Frontend - Initial Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reportWebVitals.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Successfully fetch users in admin page">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AdminPage/AdminPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AdminPage/AdminPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/AdminService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/AdminService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +24,10 @@
       <list>
         <option value="JavaScript File" />
         <option value="tsconfig.json" />
-        <option value="TypeScript File" />
         <option value="HTTP Public Environment File" />
+        <option value="TypeScript JSX File" />
+        <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -42,34 +43,45 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2SIOEQkw9AoIz2PKUT05eUFEK0R" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "airbnbclone-frontend",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/thoth/Documents/School/FullStackProject/airbnbclone-frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "C:\\Users\\thoth\\Documents\\School\\FullStackProject\\airbnbclone-frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;airbnbclone-frontend&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/thoth/Desktop/Front-End&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\thoth\\Documents\\School\\FullStackProject\\airbnbclone-frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components\AdminPage\UserList" />
+      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components\Navigation" />
+      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\assets" />
+      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\public" />
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components" />
-      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend" />
     </key>
   </component>
   <component name="RunManager">
@@ -101,7 +113,17 @@
       <workItem from="1688830865887" duration="3203000" />
       <workItem from="1689161458881" duration="11000" />
       <workItem from="1690221457891" duration="592000" />
-      <workItem from="1691065075026" duration="12775000" />
+      <workItem from="1691065075026" duration="17800000" />
+      <workItem from="1691619697437" duration="6000" />
+      <workItem from="1691665974997" duration="728000" />
+      <workItem from="1691666777131" duration="10327000" />
+      <workItem from="1691687469508" duration="6496000" />
+      <workItem from="1693564711647" duration="19645000" />
+      <workItem from="1693823303894" duration="21486000" />
+      <workItem from="1694340556949" duration="2534000" />
+      <workItem from="1694520888896" duration="10079000" />
+      <workItem from="1694696376937" duration="28517000" />
+      <workItem from="1695291931462" duration="6087000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -111,7 +133,103 @@
       <option name="project" value="LOCAL" />
       <updated>1688896108709</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Typescript,&#10;Enabled ssl/tls with self-signed certificate,&#10;Added Fluent UI,&#10;Noticed some deprecated dependencies that might need fixing...">
+      <option name="closed" value="true" />
+      <created>1691085788001</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1691085788001</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added models for Listing and Location and created a service to send a post request to the backend to create a hardcoded Listing">
+      <option name="closed" value="true" />
+      <created>1691751369878</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1691751369878</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Very simple navigation bar with login fields">
+      <option name="closed" value="true" />
+      <created>1693659129785</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693659129785</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Login functionality and token storing in session storage">
+      <option name="closed" value="true" />
+      <created>1693755329491</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693755329491</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Login/Logout functionality&#10;Added username in session storage">
+      <option name="closed" value="true" />
+      <created>1693827471874</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693827471874</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Registration functionality">
+      <option name="closed" value="true" />
+      <created>1693842844259</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693842844259</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added clickable logo on navigation bar that redirects to home">
+      <option name="closed" value="true" />
+      <created>1693918451915</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1693918451915</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated frontend to send formdata requests to the backend to handle user registration with image">
+      <option name="closed" value="true" />
+      <created>1694529298754</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1694529298754</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added search and admin components">
+      <option name="closed" value="true" />
+      <created>1695023943616</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1695023943617</updated>
+    </task>
+    <task id="LOCAL-00011" summary="useNavigate instead of window.location.href for redirect">
+      <option name="closed" value="true" />
+      <created>1695059425052</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1695059425053</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Navigation based on user role after login">
+      <option name="closed" value="true" />
+      <created>1695119396295</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1695119396295</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Successfully fetch users in admin page">
+      <option name="closed" value="true" />
+      <created>1695139499530</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1695139499530</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +260,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Frontend - Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Frontend - Initial Commit" />
+    <MESSAGE value="Added Typescript,&#10;Enabled ssl/tls with self-signed certificate,&#10;Added Fluent UI" />
+    <MESSAGE value="Added Typescript,&#10;Enabled ssl/tls with self-signed certificate,&#10;Added Fluent UI,&#10;Noticed some deprecated dependencies that might need fixing..." />
+    <MESSAGE value="Added models for Listing and Location and created a service to send a post request to the backend to create a hardcoded Listing" />
+    <MESSAGE value="Very simple navigation bar with login fields" />
+    <MESSAGE value="Login functionality and token storing in session storage" />
+    <MESSAGE value="Login/Logout functionality&#10;Added username in session storage" />
+    <MESSAGE value="Registration functionality" />
+    <MESSAGE value="Added clickable logo on navigation bar that redirects to home" />
+    <MESSAGE value="Updated frontend to send formdata requests to the backend to handle user registration with image" />
+    <MESSAGE value="Added search and admin components" />
+    <MESSAGE value="useNavigate instead of window.location.href for redirect" />
+    <MESSAGE value="Navigation based on user role after login" />
+    <MESSAGE value="Successfully fetch users in admin page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully fetch users in admin page" />
   </component>
 </project>
