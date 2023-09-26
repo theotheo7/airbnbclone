@@ -1,6 +1,7 @@
 package com.schoolproject.airbnbclone.controllers;
 
 import com.schoolproject.airbnbclone.dtos.user.response.UserBasicDetails;
+import com.schoolproject.airbnbclone.dtos.user.response.UserCompleteDetails;
 import com.schoolproject.airbnbclone.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,11 @@ public class AdminController {
     @RequestMapping(value = "/users/approve", method = RequestMethod.GET)
     public ResponseEntity<List<UserBasicDetails>> getHostsForApproval() {
         return ResponseEntity.ok(userService.getHostsForApproval());
+    }
+
+    @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
+    public ResponseEntity<UserCompleteDetails> getUser(@PathVariable String username) {
+        return new ResponseEntity<>(this.userService.getUser(username), HttpStatus.OK);
     }
 
 }

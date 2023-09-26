@@ -1,6 +1,7 @@
 package com.schoolproject.airbnbclone.services;
 
 import com.schoolproject.airbnbclone.dtos.user.response.UserBasicDetails;
+import com.schoolproject.airbnbclone.dtos.user.response.UserCompleteDetails;
 import com.schoolproject.airbnbclone.exceptions.UserException;
 import com.schoolproject.airbnbclone.models.Role;
 import com.schoolproject.airbnbclone.models.User;
@@ -23,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -67,6 +69,7 @@ public class UserService {
         var jwtToken = jwtService.generateToken(user);
         return UserLoginResponse.builder()
                 .token(jwtToken)
+                .roles(new ArrayList<>(user.getRoles()))
                 .build();
     }
 
@@ -99,6 +102,16 @@ public class UserService {
         return userList.stream()
                 .map(UserBasicDetails::new)
                 .collect(Collectors.toList());
+    }
+
+    public UserCompleteDetails getUser(String username) {
+        Optional<User> optionalUser = this.userRepository.findByUsername(username);
+
+        if (optionalUser.isPresent()) {
+            return new UserCompleteDetails(optionalUser.get());
+        } else {
+            throw new UserException(username, UserException.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
+        }
     }
 
     public List<UserBasicDetails> getHostsForApproval() {
