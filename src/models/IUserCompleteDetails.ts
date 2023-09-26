@@ -6,7 +6,7 @@ export interface IUserCompleteDetails {
     firstName: string;
     lastName: string;
     phoneNumber: string;
-    roles: Role;
+    roles: Role[];
     image: string;
     hostApproved: boolean;
 }

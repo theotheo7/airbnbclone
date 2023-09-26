@@ -34,3 +34,17 @@ export async function fetchUser(username: string) {
             return [];
         });
 }
+
+export async function approveHost(username: string) {
+    return await fetch(ServiceEndpoints.ApproveHost + "/" + username, {
+        method: 'PUT',
+        headers: {
+            'Authorization': 'Bearer ' + getToken(),
+        }
+    }).then(async (resp) => {
+        return resp;
+    }).catch((error) => {
+        console.log(error);
+        return undefined;
+    })
+}
