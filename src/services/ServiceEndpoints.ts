@@ -8,7 +8,8 @@ enum ServiceEndpoints {
     DeleteListing = "https://localhost:8443/api/listing/delete",
 
     // Admin
-    FetchUsers = "https://localhost:8443/api/admin/users"
+    FetchUsers = "https://localhost:8443/api/admin/users",
+    FetchUser = "https://localhost:8443/api/admin/user"
 }
 
 export default ServiceEndpoints;
