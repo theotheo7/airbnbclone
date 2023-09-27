@@ -26,6 +26,7 @@ public class ListingService {
     private final ListingRepository listingRepository;
     private final UserRepository userRepository;
     private final ImageService imageService;
+    private final AvailabilityService availabilityService;
 
     @Transactional
     public void createListing(Authentication authentication, ListingRequest listingRequest, MultipartFile[] multipartFiles) {
@@ -37,6 +38,7 @@ public class ListingService {
                 .build();
         listingRepository.save(listing);
         this.imageService.uploadListingImages(listing, multipartFiles);
+        this.availabilityService.populateAvailability(listing, listingRequest.getStartDate(), listingRequest.getEndDate());
     }
 
     public List<ListingBasicDetails> getListings(Authentication authentication, Integer page) {

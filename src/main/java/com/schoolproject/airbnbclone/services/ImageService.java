@@ -164,8 +164,6 @@ public class ImageService {
             }
         }
 
-        System.out.println(listingImages);
-
         this.imageRepository.saveAll(listingImages);
 
     }
