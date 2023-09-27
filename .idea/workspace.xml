@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Successfully fetch users in admin page">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminPage/AdminPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminPage/AdminPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.tsx" afterDir="false" />
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Add osm support with react leaflet">
+      <change afterPath="$PROJECT_DIR$/src/components/HostPage/MyListings/MyListings.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HostPage/MyListings/MyListings.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/IListingBasicDetails.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/HostService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/AdminService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/AdminService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ListingService.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +126,8 @@
       <workItem from="1694340556949" duration="2534000" />
       <workItem from="1694520888896" duration="10079000" />
       <workItem from="1694696376937" duration="28517000" />
-      <workItem from="1695291931462" duration="6087000" />
+      <workItem from="1695291931462" duration="18356000" />
+      <workItem from="1695811366504" duration="5253000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -229,7 +233,39 @@
       <option name="project" value="LOCAL" />
       <updated>1695139499530</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="User list in admin page css fixes and introduce specific user details">
+      <option name="closed" value="true" />
+      <created>1695720374173</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1695720374173</updated>
+    </task>
+    <task id="LOCAL-00015" summary="User list in admin page css fixes and introduce specific user details">
+      <option name="closed" value="true" />
+      <created>1695720390187</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1695720390187</updated>
+    </task>
+    <task id="LOCAL-00016" summary="User details page and approve host functionality">
+      <option name="closed" value="true" />
+      <created>1695724448610</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1695724448610</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Add osm support with react leaflet">
+      <option name="closed" value="true" />
+      <created>1695735516541</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1695735516541</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +309,9 @@
     <MESSAGE value="useNavigate instead of window.location.href for redirect" />
     <MESSAGE value="Navigation based on user role after login" />
     <MESSAGE value="Successfully fetch users in admin page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully fetch users in admin page" />
+    <MESSAGE value="User list in admin page css fixes and introduce specific user details" />
+    <MESSAGE value="User details page and approve host functionality" />
+    <MESSAGE value="Add osm support with react leaflet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add osm support with react leaflet" />
   </component>
 </project>
