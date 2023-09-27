@@ -1,4 +1,4 @@
-package com.schoolproject.airbnbclone.dtos.listing;
+package com.schoolproject.airbnbclone.dtos.listing.request;
 
 import com.schoolproject.airbnbclone.models.Location;
 import lombok.Data;

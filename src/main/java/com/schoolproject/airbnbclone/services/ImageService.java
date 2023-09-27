@@ -71,7 +71,7 @@ public class ImageService {
                         fileOutputStream.close();
                         Image image = new Image();
                         image.setPath(filePath);
-                        image.setUser(user);
+                        user.setImage(image);
                         Image userImage;
                         userImage = image;
                         this.imageRepository.save(userImage);
@@ -163,6 +163,8 @@ public class ImageService {
                 throw new InternalServerErrorException(e.getMessage(), InternalServerErrorException.MEDIA_UPLOAD_FAILURE, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
+
+        System.out.println(listingImages);
 
         this.imageRepository.saveAll(listingImages);
 

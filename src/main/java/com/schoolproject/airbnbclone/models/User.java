@@ -1,6 +1,5 @@
 package com.schoolproject.airbnbclone.models;
 
-import com.schoolproject.airbnbclone.dtos.user.response.UserBasicDetails;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,32 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
-@NamedNativeQuery(
-        name = "userQry",
-        query = "SELECT u.username AS username, u.first_name AS firstName, u.last_name AS lastName, u.phone_number AS phoneNumber, i.path AS image " +
-                "FROM User u " +
-                "INNER JOIN users_roles ur " +
-                "ON u.id = ur.user_id " +
-                "INNER JOIN image i " +
-                "ON u.id = i.user_id " +
-                "WHERE ur.role_id = 3 " +
-                "AND u.host_approved = false",
-        resultSetMapping = "UserBasicResult"
-)
-@SqlResultSetMapping(name = "UserBasicResult",
-        classes = {
-                @ConstructorResult(
-                        targetClass = UserBasicDetails.class,
-                        columns = {
-                                @ColumnResult(name = "username"),
-                                @ColumnResult(name = "firstName"),
-                                @ColumnResult(name = "lastName"),
-                                @ColumnResult(name = "phoneNumber"),
-                                @ColumnResult(name = "image")
-                        }
-                )
-        }
-)
 @Data
 @Builder
 @NoArgsConstructor
@@ -75,6 +48,9 @@ public class User implements UserDetails {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private Image image;
+
+    @OneToMany(mappedBy = "host")
+    private Set<Listing> listings;
 
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;

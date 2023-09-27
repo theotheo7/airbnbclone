@@ -6,7 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -24,9 +25,13 @@ public class Listing {
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "listing", cascade = CascadeType.ALL)
-    private Set<Image> images;
+    @OneToMany(mappedBy = "listing")
+    private List<Image> images = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "host_id", referencedColumnName = "id")
+    private User host;
 }
