@@ -1,0 +1,9 @@
+.map-container {
+    height: 20vh;
+}
+
+.location-container {
+    padding: 1px 25px;
+    display: flex;
+    justify-content: space-between;
+}

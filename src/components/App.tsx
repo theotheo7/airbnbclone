@@ -6,6 +6,7 @@ import UserList from "./AdminPage/UserList/UserList";
 import Register from "./Register/Register";
 import UserDetails from "./AdminPage/UserDetails/UserDetails";
 import MyListings from "./HostPage/MyListings/MyListings";
+import CreateListing from "./HostPage/CreateListing/CreateListing";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/admin" Component={UserList}/>
                     <Route path="/admin/user/:username" Component={UserDetails}/>
                     <Route path="/host" Component={MyListings}/>
+                    <Route path="/host/create" Component={CreateListing}/>
                 </Routes>
             </div>
         </BrowserRouter>
