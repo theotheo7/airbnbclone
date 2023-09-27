@@ -9,7 +9,8 @@ enum ServiceEndpoints {
     ApproveHost = "https://localhost:8443/api/admin/users/approve",
 
     // Host
-    FetchListings = "https://localhost:8443/api/host/listings"
+    FetchListings = "https://localhost:8443/api/host/listings",
+    CreateListing = "https://localhost:8443/api/host/listing/create"
 }
 
 export default ServiceEndpoints;

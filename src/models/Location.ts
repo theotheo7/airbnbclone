@@ -15,12 +15,19 @@ export class Location implements ILocation {
     state: string;
     zipcode: string;
 
-    constructor(location: ILocation) {
-        this.longitude = location.longitude;
-        this.latitude = location.latitude;
-        this.address = location.address;
-        this.city = location.city;
-        this.state = location.state;
-        this.zipcode = location.zipcode;
+    constructor(
+        longitude: number,
+        latitude: number,
+        address: string,
+        city: string,
+        state: string,
+        zipcode: string,
+    ) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
     }
 }

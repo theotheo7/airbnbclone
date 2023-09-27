@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Host view listings page">
-      <change afterPath="$PROJECT_DIR$/src/assets/marker-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HostPage/CreateListing/CreateListing.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HostPage/CreateListing/CreateListing.tsx" afterDir="false" />
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Host create listing first commit - Need to create availability handling in backend first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HostPage/CreateListing/CreateListing.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HostPage/CreateListing/CreateListing.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HostPage/CreateListing/CreateListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HostPage/CreateListing/CreateListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Listing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Listing.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Location.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Location.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/HostService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/HostService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +127,7 @@
       <workItem from="1694520888896" duration="10079000" />
       <workItem from="1694696376937" duration="28517000" />
       <workItem from="1695291931462" duration="18356000" />
-      <workItem from="1695811366504" duration="11381000" />
+      <workItem from="1695811366504" duration="20455000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -270,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695821382324</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Host create listing first commit - Need to create availability handling in backend first">
+      <option name="closed" value="true" />
+      <created>1695828818779</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1695828818779</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,6 +329,7 @@
     <MESSAGE value="User details page and approve host functionality" />
     <MESSAGE value="Add osm support with react leaflet" />
     <MESSAGE value="Host view listings page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Host view listings page" />
+    <MESSAGE value="Host create listing first commit - Need to create availability handling in backend first" />
+    <option name="LAST_COMMIT_MESSAGE" value="Host create listing first commit - Need to create availability handling in backend first" />
   </component>
 </project>

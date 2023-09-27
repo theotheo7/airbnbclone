@@ -114,8 +114,7 @@ function Register() {
                 navigate("/");
             } catch (err) {
                 console.log(err);
-                window.alert("Something went wrong! Try again.")
-            } finally {
+                window.alert("Something went wrong! Try again.");
             }
         }
     }
