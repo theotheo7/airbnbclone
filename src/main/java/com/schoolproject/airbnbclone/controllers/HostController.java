@@ -46,4 +46,17 @@ public class HostController {
         return new ResponseEntity<>(this.listingService.getListing(name), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/listing", method = RequestMethod.PUT)
+    public ResponseEntity<HttpStatus> updateListing(
+            Authentication authentication,
+            @RequestParam(name = "listing") String listing,
+            @RequestParam(name = "images", required = false) MultipartFile[] multipartFiles
+    ) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        ListingRequest listingRequest = mapper.readValue(listing, ListingRequest.class);
+        listingService.updateListing(authentication, listingRequest, multipartFiles);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
 }

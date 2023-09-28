@@ -75,6 +75,32 @@ public class ListingService {
         }
     }
 
+    public void updateListing(Authentication authentication, ListingRequest listingRequest, MultipartFile[] multipartFiles) {
+        Optional<Listing> optionalListing = listingRepository.findByName(listingRequest.getName());
+
+        if (optionalListing.isEmpty()) {
+            throw new ListingException(ListingException.LISTING_NOT_FOUND, HttpStatus.NOT_FOUND);
+        }
+
+        Listing listing = optionalListing.get();
+
+        listing.setLocation(listingRequest.getLocation());
+        listing.setName(listingRequest.getName());
+        listing.setMaxPeople(listingRequest.getMaxPeople());
+        listing.setPrice(listingRequest.getPrice());
+        listing.setExtraPeople(listingRequest.getExtraPeople());
+        listing.setType(listingRequest.getType());
+        listing.setBeds(listingRequest.getBeds());
+        listing.setBaths(listingRequest.getBaths());
+        listing.setMeters(listingRequest.getMeters());
+        listing.setLiving(listingRequest.getLiving());
+        listing.setParty(listingRequest.getParty());
+        listing.setPets(listingRequest.getPets());
+        listing.setSummary(listingRequest.getSummary());
+
+        imageService.updateListingImages(listing, multipartFiles);
+    }
+
     public void deleteListing(Integer Id) {
         listingRepository.removeListingById(Id);
     }
