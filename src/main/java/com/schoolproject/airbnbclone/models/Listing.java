@@ -34,4 +34,37 @@ public class Listing {
     @ManyToOne
     @JoinColumn(name = "host_id", referencedColumnName = "id")
     private User host;
+
+    @Column(nullable = false)
+    private Integer maxPeople;
+
+    @Column(nullable = false)
+    private Double price;
+
+    @Column(nullable = false)
+    private Integer extraPeople;
+
+    @Column(nullable = false)
+    private String type;
+
+    @Column(nullable = false)
+    private Integer beds;
+
+    @Column(nullable = false)
+    private Integer baths;
+
+    @Column(nullable = false)
+    private Integer meters;
+
+    @Column(nullable = false)
+    private Boolean living;
+
+    @Column(nullable = false)
+    private Boolean party;
+
+    @Column(nullable = false)
+    private Boolean pets;
+
+    @Column(nullable = false)
+    private String summary;
 }

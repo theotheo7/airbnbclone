@@ -35,6 +35,17 @@ public class ListingService {
                 .name(listingRequest.getName())
                 .location(listingRequest.getLocation())
                 .host(host.orElseGet(User::new))
+                .maxPeople(listingRequest.getMaxPeople())
+                .price(listingRequest.getPrice())
+                .extraPeople(listingRequest.getExtraPeople())
+                .type(listingRequest.getType())
+                .beds(listingRequest.getBeds())
+                .baths(listingRequest.getBaths())
+                .meters(listingRequest.getMeters())
+                .living(listingRequest.getLiving())
+                .party(listingRequest.getParty())
+                .pets(listingRequest.getPets())
+                .summary(listingRequest.getSummary())
                 .build();
         listingRepository.save(listing);
         this.imageService.uploadListingImages(listing, multipartFiles);

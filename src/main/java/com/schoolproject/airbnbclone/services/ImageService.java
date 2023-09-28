@@ -35,7 +35,7 @@ public class ImageService {
 
         if (!uploadsDirectory.exists()) {
             if (!uploadsDirectory.mkdirs()) {
-                throw new RuntimeException("What the fck");
+                throw new RuntimeException();
             }
         }
 
@@ -43,7 +43,7 @@ public class ImageService {
 
         if (!userDirectory.exists()) {
             if (!userDirectory.mkdirs()) {
-                throw new RuntimeException("Giati den doulevei");
+                throw new RuntimeException();
             }
         }
     }

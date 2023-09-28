@@ -1,24 +1,32 @@
 package com.schoolproject.airbnbclone.dtos.listing.request;
 
 import com.schoolproject.airbnbclone.models.Location;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class ListingRequest implements Serializable {
 
-    private String name;
     private Location location;
+    private String name;
     private LocalDate startDate;
     private LocalDate endDate;
-
-    public ListingRequest(String name, Location location, String startDate, String endDate) {
-        this.name = name;
-        this.location = location;
-        this.startDate = LocalDate.parse(startDate);
-        this.endDate = LocalDate.parse(endDate);
-    }
+    private Integer maxPeople;
+    private Double price;
+    private Integer extraPeople;
+    private String type;
+    private Integer beds;
+    private Integer baths;
+    private Integer meters;
+    private Boolean living;
+    private Boolean party;
+    private Boolean pets;
+    private String summary;
 
 }
