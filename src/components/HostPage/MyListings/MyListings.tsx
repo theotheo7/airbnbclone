@@ -1,6 +1,6 @@
 import './MyListings.css'
 import {useEffect, useState} from "react";
-import {IListingBasicDetails} from "../../../models/IListingBasicDetails";
+import {IListingBasicDetails} from "../../../models/Listing/IListingBasicDetails";
 import {fetchListings} from "../../../services/HostService";
 import {DefaultButton, Stack, StackItem} from "@fluentui/react";
 import {useNavigate} from "react-router-dom";
@@ -18,7 +18,7 @@ function MyListings() {
     }, []);
 
     function _onClickView(name: string) {
-        navigate("/listing/" + name);
+        navigate("/host/listing/" + name);
     }
 
     function _onClickCreate() {

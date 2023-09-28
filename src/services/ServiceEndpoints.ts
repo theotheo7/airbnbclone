@@ -10,7 +10,9 @@ enum ServiceEndpoints {
 
     // Host
     FetchListings = "https://localhost:8443/api/host/listings",
-    CreateListing = "https://localhost:8443/api/host/listing/create"
+    FetchListing = "https://localhost:8443/api/host/listing",
+    CreateListing = "https://localhost:8443/api/host/listing/create",
+    UpdateListing = "https://localhost:8443/api/host/listing"
 }
 
 export default ServiceEndpoints;

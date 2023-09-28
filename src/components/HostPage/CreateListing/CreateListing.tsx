@@ -16,7 +16,7 @@ import {Icon} from 'leaflet'
 import React, {ChangeEvent, useState} from "react";
 import {LatLng} from "leaflet";
 import {Location} from "../../../models/Location";
-import {Listing} from "../../../models/Listing";
+import {Listing} from "../../../models/Listing/Listing";
 import {createListing} from "../../../services/HostService";
 import {useNavigate} from "react-router-dom";
 
@@ -217,7 +217,7 @@ function CreateListing() {
             maxPeople,
             price,
             extraPeople,
-            type?.id ? type.id : "",
+            type?.key ? type.key as string : "",
             beds,
             baths,
             meters,

@@ -1,4 +1,4 @@
-import { ILocation } from "./Location";
+import { ILocation } from "../Location";
 
 export interface IListing {
     location: ILocation;
