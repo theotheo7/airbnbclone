@@ -5,15 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.schoolproject.airbnbclone.dtos.listing.request.ListingRequest;
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingBasicDetails;
+import com.schoolproject.airbnbclone.dtos.listing.response.ListingCompleteDetails;
 import com.schoolproject.airbnbclone.services.ListingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -41,6 +39,11 @@ public class HostController {
         ListingRequest listingRequest = mapper.readValue(listing, ListingRequest.class);
         listingService.createListing(authentication, listingRequest, multipartFiles);
         return ResponseEntity.ok(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/listing/{name}", method = RequestMethod.GET)
+    public ResponseEntity<ListingCompleteDetails> getListing(@PathVariable String name) {
+        return new ResponseEntity<>(this.listingService.getListing(name), HttpStatus.OK);
     }
 
 }

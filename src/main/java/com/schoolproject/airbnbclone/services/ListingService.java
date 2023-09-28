@@ -2,6 +2,9 @@ package com.schoolproject.airbnbclone.services;
 
 import com.schoolproject.airbnbclone.dtos.listing.request.ListingRequest;
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingBasicDetails;
+import com.schoolproject.airbnbclone.dtos.listing.response.ListingCompleteDetails;
+import com.schoolproject.airbnbclone.exceptions.ListingException;
+import com.schoolproject.airbnbclone.exceptions.UserException;
 import com.schoolproject.airbnbclone.models.Listing;
 import com.schoolproject.airbnbclone.models.User;
 import com.schoolproject.airbnbclone.repositories.ListingRepository;
@@ -11,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -59,6 +63,16 @@ public class ListingService {
         return listingList.stream()
                 .map(ListingBasicDetails::new)
                 .collect(Collectors.toList());
+    }
+
+    public ListingCompleteDetails getListing(String name) {
+        Optional<Listing> optionalListing = this.listingRepository.findByName(name);
+
+        if (optionalListing.isPresent()) {
+            return new ListingCompleteDetails(optionalListing.get());
+        } else {
+            throw new UserException(name, ListingException.LISTING_NOT_FOUND, HttpStatus.NOT_FOUND);
+        }
     }
 
     public void deleteListing(Integer Id) {
