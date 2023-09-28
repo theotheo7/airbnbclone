@@ -16,7 +16,6 @@ export interface IListing {
     party: boolean;
     pets: boolean;
     summary: string;
-    images: File[];
 }
 
 export class Listing implements IListing {
@@ -35,7 +34,6 @@ export class Listing implements IListing {
     party: boolean;
     pets: boolean;
     summary: string;
-    images: File[];
 
     constructor(
         location: ILocation,
@@ -52,8 +50,7 @@ export class Listing implements IListing {
         living: boolean,
         party: boolean,
         pets: boolean,
-        summary: string,
-        images: File[]
+        summary: string
     ) {
         this.location = location;
         this.name = name;
@@ -70,6 +67,5 @@ export class Listing implements IListing {
         this.party = party;
         this.pets = pets;
         this.summary = summary;
-        this.images = images;
     }
 }

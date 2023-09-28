@@ -224,8 +224,7 @@ function CreateListing() {
             living,
             party,
             pets,
-            summary ? summary : "",
-            images
+            summary ? summary : ""
         );
 
         if (images) {
@@ -303,7 +302,7 @@ function CreateListing() {
                 </StackItem>
                 <h3 className="section-header">Information</h3>
                 <StackItem className="name-container">
-                    <TextField label="Name" type="number" value={name} onChange={_onChangeName} style={{minWidth: '15vw'}}/>
+                    <TextField label="Name" value={name} onChange={_onChangeName} style={{minWidth: '15vw'}}/>
                 </StackItem>
                 <StackItem className="information-container">
                     <TextField label="Maximum people" type="number" value={maxPeople.toString()} onChange={_onChangeMaxPeople}/>
