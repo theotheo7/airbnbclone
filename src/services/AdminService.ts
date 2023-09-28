@@ -1,7 +1,7 @@
 import ServiceEndpoints from "./ServiceEndpoints";
-import {IUserBasicDetails} from "../models/IUserBasicDetails";
-import {getToken} from "./Authentication";
-import {IUserCompleteDetails} from "../models/IUserCompleteDetails";
+import {IUserBasicDetails} from "../models/User/IUserBasicDetails";
+import {getToken} from "./UserService";
+import {IUserCompleteDetails} from "../models/User/IUserCompleteDetails";
 
 export async function fetchUsers(page: number) {
     return await fetch(ServiceEndpoints.FetchUsers + "?page=" + page, {

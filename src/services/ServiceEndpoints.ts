@@ -1,7 +1,9 @@
 enum ServiceEndpoints {
-    // Authorization
-    Register = "https://localhost:8443/api/v1/auth/register",
-    Authenticate = "https://localhost:8443/api/v1/auth/authenticate",
+    // User
+    Register = "https://localhost:8443/api/user/register",
+    Authenticate = "https://localhost:8443/api/user/authenticate",
+    FetchMyProfile = "https://localhost:8443/api/user",
+    UpdateMyProfile = "https://localhost:8443/api/user/update",
 
     // Admin
     FetchUsers = "https://localhost:8443/api/admin/users",

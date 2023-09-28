@@ -2,7 +2,7 @@ import './UserDetails.css'
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {approveHost, fetchUser} from "../../../services/AdminService";
-import {IUserCompleteDetails} from "../../../models/IUserCompleteDetails";
+import {IUserCompleteDetails} from "../../../models/User/IUserCompleteDetails";
 import {DefaultButton, Stack, StackItem, TextField} from "@fluentui/react";
 
 function UserDetails() {

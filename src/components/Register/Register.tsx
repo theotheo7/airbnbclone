@@ -1,8 +1,8 @@
 import "./Register.css"
 import {Checkbox, PrimaryButton, Stack, TextField} from "@fluentui/react";
 import React, {ChangeEvent, useState} from "react";
-import {register} from "../../services/Authentication";
-import {UserRegister} from "../../models/UserRegister";
+import {register} from "../../services/UserService";
+import {UserRegister} from "../../models/User/UserRegister";
 import {useNavigate} from "react-router-dom";
 
 

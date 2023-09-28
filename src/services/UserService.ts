@@ -1,5 +1,6 @@
-import {UserLogin} from "../models/UserLogin";
+import {UserLogin} from "../models/User/UserLogin";
 import ServiceEndpoints from "./ServiceEndpoints";
+import {IUserCompleteDetails} from "../models/User/IUserCompleteDetails";
 
 export function storeUserInfo(username: string, jwt: string, roles: string[]) {
     sessionStorage.setItem("username", username);
@@ -47,6 +48,39 @@ export async function authenticate(userLogin:UserLogin) {
         })
         .catch((error) => {
             console.log(error.message);
+        });
+}
+
+export async function fetchMyProfile(username: string) {
+    return await fetch(ServiceEndpoints.FetchMyProfile + "/" + username, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + getToken(),
+        }
+    }).then(async (resp) => {
+        const parsedData: IUserCompleteDetails = await resp.json();
+        return parsedData;
+    })
+        .catch((error) => {
+            console.log(error);
+            return [];
+        });
+}
+
+export async function updateMyProfile(formdata: FormData) {
+    return await fetch(ServiceEndpoints.UpdateMyProfile, {
+        method: 'PUT',
+        headers: {
+            'Authorization': 'Bearer ' + getToken(),
+        },
+        body: formdata
+    }).then(async (resp) => {
+        const parsedData: IUserCompleteDetails = await resp.json();
+        return parsedData;
+    })
+        .catch((error) => {
+            console.log(error);
+            return [];
         });
 }
 

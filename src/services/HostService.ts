@@ -1,5 +1,5 @@
 import ServiceEndpoints from "./ServiceEndpoints";
-import {getToken} from "./Authentication";
+import {getToken} from "./UserService";
 import {IListingBasicDetails} from "../models/Listing/IListingBasicDetails";
 import {IListingCompleteDetails} from "../models/Listing/IListingCompleteDetails";
 

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import './Navigation.css';
 import {DefaultButton, TextField} from "@fluentui/react";
 import {useLocation, useNavigate} from "react-router-dom";
-import {UserLogin} from "../../models/UserLogin";
-import {authenticate, getRoles, getUsername, logout, storeUserInfo} from "../../services/Authentication";
+import {UserLogin} from "../../models/User/UserLogin";
+import {authenticate, getRoles, getUsername, logout, storeUserInfo} from "../../services/UserService";
 
 function Navigation() {
     const [Username, setUsername] = useState<string | undefined>("");

@@ -1,7 +1,7 @@
 import './UserList.css'
 import {useEffect, useState} from "react";
 import {fetchUsers} from "../../../services/AdminService";
-import {IUserBasicDetails} from "../../../models/IUserBasicDetails";
+import {IUserBasicDetails} from "../../../models/User/IUserBasicDetails";
 import {DefaultButton, Stack, StackItem} from "@fluentui/react";
 import {useNavigate} from "react-router-dom";
 

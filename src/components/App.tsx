@@ -8,6 +8,7 @@ import UserDetails from "./AdminPage/UserDetails/UserDetails";
 import MyListings from "./HostPage/MyListings/MyListings";
 import CreateListing from "./HostPage/CreateListing/CreateListing";
 import MyListing from "./HostPage/MyListing/MyListing";
+import MyProfile from "./MyProfile/MyProfile";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Routes>
                     <Route path="/" Component={Search}/>
                     <Route path="/register" Component={Register}/>
+                    <Route path="/myprofile" Component={MyProfile}/>
                     <Route path="/admin" Component={UserList}/>
                     <Route path="/admin/user/:username" Component={UserDetails}/>
                     <Route path="/host" Component={MyListings}/>
