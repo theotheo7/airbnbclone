@@ -54,6 +54,30 @@ function Navigation() {
         }
     }
 
+    function _onClickHome() {
+        navigate("/");
+    }
+
+    function _onClickAdmin() {
+        navigate("/admin");
+    }
+
+    function isAdmin() {
+        return getRoles()?.includes("ADMIN");
+    }
+
+    function _onClickHost() {
+        navigate("/host");
+    }
+
+    function isHost() {
+        return getRoles()?.includes("HOST");
+    }
+
+    function _onClickProfile() {
+        navigate("/myprofile");
+    }
+
     function _onClickLogout() {
         logout();
         navigate("/");
@@ -68,8 +92,29 @@ function Navigation() {
                 <></>
                 :
                 getUsername() !== null ?
-                    <div>
-                        Hello {getUsername()}!
+                    <div className="navigation-buttons">
+                        <DefaultButton
+                            text="Home"
+                            label="Home"
+                            onClick={_onClickHome}
+                        />
+                        <DefaultButton
+                            text="Admin"
+                            label="Admin"
+                            onClick={_onClickAdmin}
+                            disabled={!isAdmin()}
+                        />
+                        <DefaultButton
+                            text="Host"
+                            label="Host"
+                            onClick={_onClickHost}
+                            disabled={!isHost()}
+                        />
+                        <DefaultButton
+                            text="Profile"
+                            label="Profile"
+                            onClick={_onClickProfile}
+                        />
                         <DefaultButton
                             text="Logout"
                             label="Logout"

@@ -26,3 +26,9 @@
 .register-prompt {
     font-size: 10px;
 }
+
+.navigation-buttons {
+    display: flex;
+    gap: 50px;
+    padding-right: 10px;
+}
