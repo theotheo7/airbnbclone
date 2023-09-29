@@ -15,7 +15,6 @@ function UserList() {
         (async function() {
             const result = await fetchUsers(page);
             setUsers(result);
-            console.log(result);
         })();
     }, [page]);
 

@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Add navigation buttons">
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="My listing update fix">
+      <change afterPath="$PROJECT_DIR$/src/services/ResultsService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HostPage/MyListing/MyListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HostPage/MyListing/MyListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +24,9 @@
         <option value="JavaScript File" />
         <option value="tsconfig.json" />
         <option value="HTTP Public Environment File" />
+        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
         <option value="CSS File" />
-        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -74,11 +79,11 @@
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components\Search" />
+      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components\Search\SearchPage" />
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\models\User" />
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\models\Listing" />
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\assets" />
-      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components\AdminPage\UserList" />
-      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components\Navigation" />
     </key>
   </component>
   <component name="RunManager">
@@ -122,7 +127,7 @@
       <workItem from="1694696376937" duration="28517000" />
       <workItem from="1695291931462" duration="18356000" />
       <workItem from="1695811366504" duration="39808000" />
-      <workItem from="1695918999257" duration="3302000" />
+      <workItem from="1695918999257" duration="16628000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -316,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695980177793</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="My listing update fix">
+      <option name="closed" value="true" />
+      <created>1695984995941</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1695984995941</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,6 +383,7 @@
     <MESSAGE value="Host view listing and update functionality" />
     <MESSAGE value="My profile and update functionality" />
     <MESSAGE value="Add navigation buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add navigation buttons" />
+    <MESSAGE value="My listing update fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="My listing update fix" />
   </component>
 </project>
