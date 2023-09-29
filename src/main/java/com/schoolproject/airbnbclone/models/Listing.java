@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -31,6 +32,9 @@ public class Listing {
     @OneToMany(mappedBy = "listing")
     private List<Image> images = new ArrayList<>();
 
+    @OneToMany(mappedBy = "listing")
+    private List<Availability> availabilities = new ArrayList<>();
+
     @ManyToOne
     @JoinColumn(name = "host_id", referencedColumnName = "id")
     private User host;
@@ -39,7 +43,7 @@ public class Listing {
     private Integer maxPeople;
 
     @Column(nullable = false)
-    private Double price;
+    private BigDecimal price;
 
     @Column(nullable = false)
     private Integer extraPeople;
@@ -67,4 +71,25 @@ public class Listing {
 
     @Column(nullable = false)
     private String summary;
+
+    @Column(nullable = false)
+    private Boolean wifi;
+
+    @Column(nullable = false)
+    private Boolean ac;
+
+    @Column(nullable = false)
+    private Boolean heat;
+
+    @Column(nullable = false)
+    private Boolean kitchen;
+
+    @Column(nullable = false)
+    private Boolean tv;
+
+    @Column(nullable = false)
+    private Boolean parking;
+
+    @Column(nullable = false)
+    private Boolean elevator;
 }

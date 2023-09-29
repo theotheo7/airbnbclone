@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -18,7 +19,7 @@ public class ListingCompleteDetails implements Serializable {
     private Location location;
     private String name;
     private Integer maxPeople;
-    private Double price;
+    private BigDecimal price;
     private Integer extraPeople;
     private String type;
     private Integer beds;

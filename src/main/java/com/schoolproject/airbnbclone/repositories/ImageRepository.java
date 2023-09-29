@@ -11,11 +11,11 @@ public interface ImageRepository extends JpaRepository<Image, Integer> {
     @Transactional
     @Modifying
     @Query("DELETE FROM Image i WHERE i.listing.id = ?1")
-    void deleteByListing(Integer listingID);
+    void deleteByListing(Long listingID);
 
     @Transactional
     @Modifying
     @Query("DELETE FROM Image i WHERE i.user.id = ?1")
-    void deleteByUser(Integer userID);
+    void deleteByUser(Long userID);
 
 }

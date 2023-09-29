@@ -9,16 +9,21 @@ import com.schoolproject.airbnbclone.models.Listing;
 import com.schoolproject.airbnbclone.models.User;
 import com.schoolproject.airbnbclone.repositories.ListingRepository;
 import com.schoolproject.airbnbclone.repositories.UserRepository;
+import com.schoolproject.airbnbclone.specifications.ListingSpecificationBuilder;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,6 +55,13 @@ public class ListingService {
                 .party(listingRequest.getParty())
                 .pets(listingRequest.getPets())
                 .summary(listingRequest.getSummary())
+                .wifi(listingRequest.getWifi())
+                .ac(listingRequest.getAc())
+                .heat(listingRequest.getHeat())
+                .kitchen(listingRequest.getKitchen())
+                .tv(listingRequest.getTv())
+                .parking(listingRequest.getParking())
+                .elevator(listingRequest.getElevator())
                 .build();
         listingRepository.save(listing);
         this.imageService.uploadListingImages(listing, multipartFiles);
@@ -105,6 +117,35 @@ public class ListingService {
         this.listingRepository.save(listing);
 
         imageService.updateListingImages(listing, multipartFiles);
+    }
+
+    public List<ListingBasicDetails> searchListings(
+            Integer page,
+            String city,
+            LocalDate fromDate,
+            LocalDate toDate,
+            Integer people,
+            String type,
+            BigDecimal maxPrice,
+            Boolean wifi,
+            Boolean ac,
+            Boolean heat,
+            Boolean kitchen,
+            Boolean tv,
+            Boolean parking,
+            Boolean elevator
+    ) {
+        PageRequest pageRequest = PageRequest.of(page, 10, Sort.by("price").ascending());
+
+        Specification<Listing> listingSpecification = ListingSpecificationBuilder.filterListings(city, fromDate, toDate, people, type, maxPrice, wifi, ac, heat, kitchen, tv, parking, elevator);
+
+        Page<Listing> listingPage = this.listingRepository.searchListings(listingSpecification, pageRequest);
+
+        List<Listing> listingList = listingPage.getContent();
+
+        return listingList.stream()
+                .map(ListingBasicDetails::new)
+                .collect(Collectors.toList());
     }
 
     public void deleteListing(Integer Id) {

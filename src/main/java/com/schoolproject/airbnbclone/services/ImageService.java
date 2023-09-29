@@ -30,7 +30,7 @@ public class ImageService {
     private final String LISTING_UPLOADS_DIRECTORY = "Uploads/Listings/";
     private final String USER_UPLOADS_DIRECTORY = "Uploads/Users/";
 
-    private void createDirectory(String directory, Integer id) {
+    private void createDirectory(String directory, Long id) {
         File uploadsDirectory = new File(directory);
 
         if (!uploadsDirectory.exists()) {
@@ -203,7 +203,7 @@ public class ImageService {
     }
 
     @Transactional
-    public void deleteListingImages(Integer listingID) {
+    public void deleteListingImages(Long listingID) {
 
         this.imageRepository.deleteByListing(listingID);
 
@@ -219,7 +219,7 @@ public class ImageService {
     }
 
     @Transactional
-    public void deleteUserImage(Integer userID) {
+    public void deleteUserImage(Long userID) {
 
         this.imageRepository.deleteByUser(userID);
 

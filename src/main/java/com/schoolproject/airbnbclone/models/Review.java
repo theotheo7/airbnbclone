@@ -6,12 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Location {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,20 +21,17 @@ public class Location {
     private Long id;
 
     @Column(nullable = false)
-    private Double longitude;
+    private LocalDate date;
 
     @Column(nullable = false)
-    private Double latitude;
+    private String comment;
 
-    @Column(nullable = false)
-    private String address;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reviewer_id", referencedColumnName = "id")
+    private User reviewer;
 
-    @Column(nullable = false)
-    private String city;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "listing_id", referencedColumnName = "id")
+    private Listing listing;
 
-    @Column(nullable = false)
-    private String state;
-
-    @Column(nullable = false)
-    private String zipcode;
 }
