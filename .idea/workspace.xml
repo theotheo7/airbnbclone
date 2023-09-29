@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="My profile and update functionality">
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Add navigation buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HostPage/MyListing/MyListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HostPage/MyListing/MyListing.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,7 @@
       <workItem from="1694696376937" duration="28517000" />
       <workItem from="1695291931462" duration="18356000" />
       <workItem from="1695811366504" duration="39808000" />
-      <workItem from="1695918999257" duration="1865000" />
+      <workItem from="1695918999257" duration="3302000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -309,7 +308,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695918830724</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Add navigation buttons">
+      <option name="closed" value="true" />
+      <created>1695980177793</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1695980177793</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +369,7 @@
     <MESSAGE value="Send request to create listing to backend - minor fixes" />
     <MESSAGE value="Host view listing and update functionality" />
     <MESSAGE value="My profile and update functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="My profile and update functionality" />
+    <MESSAGE value="Add navigation buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add navigation buttons" />
   </component>
 </project>

@@ -73,7 +73,7 @@ function MyListing() {
         newValue?: string
     ): void {
         if (listing && newValue) {
-            setListing({...listing, location: {...listing?.location, address: newValue}});
+            setListing({...listing, location: {...listing?.location, state: newValue}});
         }
     }
 
