@@ -6,6 +6,8 @@ public class ListingException extends AirbnbCloneException {
 
     public static final String LISTING_NOT_FOUND = "LE_001";
 
+    public static final String LISTING_HOST_DIFFERENT = "LE_002";
+
     public ListingException(String message, String code, HttpStatus httpStatus) {
         super(message, code, httpStatus);
     }

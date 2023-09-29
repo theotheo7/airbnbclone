@@ -84,6 +84,10 @@ public class ListingService {
 
         Listing listing = optionalListing.get();
 
+        if (!listing.getHost().getUsername().equals(authentication.getName())) {
+            throw new ListingException(ListingException.LISTING_HOST_DIFFERENT, HttpStatus.BAD_REQUEST);
+        }
+
         listing.setLocation(listingRequest.getLocation());
         listing.setName(listingRequest.getName());
         listing.setMaxPeople(listingRequest.getMaxPeople());
