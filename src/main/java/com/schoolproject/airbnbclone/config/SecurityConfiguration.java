@@ -36,7 +36,7 @@ public class SecurityConfiguration {
                         channel.anyRequest().requiresSecure())
                 .authorizeHttpRequests(request -> request.requestMatchers("api/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/api/host/**").hasAuthority("HOST")
-                        .requestMatchers("api/v1/auth/**").permitAll().anyRequest().authenticated())
+                        .requestMatchers("api/user/**").permitAll().anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider).addFilterBefore(
                         jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

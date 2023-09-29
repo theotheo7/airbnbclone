@@ -19,7 +19,7 @@ public class Image {
     @Column(nullable = false)
     private String path;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "listing_id", referencedColumnName = "id")
     private Listing listing;
 

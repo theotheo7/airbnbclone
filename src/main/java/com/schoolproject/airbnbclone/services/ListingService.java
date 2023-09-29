@@ -98,6 +98,8 @@ public class ListingService {
         listing.setPets(listingRequest.getPets());
         listing.setSummary(listingRequest.getSummary());
 
+        this.listingRepository.save(listing);
+
         imageService.updateListingImages(listing, multipartFiles);
     }
 

@@ -1,5 +1,6 @@
 package com.schoolproject.airbnbclone.services;
 
+import com.schoolproject.airbnbclone.dtos.user.request.UserUpdate;
 import com.schoolproject.airbnbclone.dtos.user.response.UserBasicDetails;
 import com.schoolproject.airbnbclone.dtos.user.response.UserCompleteDetails;
 import com.schoolproject.airbnbclone.exceptions.UserException;
@@ -18,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -112,6 +114,34 @@ public class UserService {
         } else {
             throw new UserException(username, UserException.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
+    }
+
+    public void updateProfile(Authentication authentication, UserUpdate userUpdate, MultipartFile multipartFile) {
+        if (!authentication.getName().equals(userUpdate.getUsername())) {
+            throw new UserException(UserException.USER_ACTION_FORBIDDEN, HttpStatus.BAD_REQUEST);
+        }
+
+        Optional<User> optionalUser = this.userRepository.findByUsername(authentication.getName());
+
+        if (optionalUser.isEmpty()) {
+            throw new UserException(UserException.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
+        }
+
+        System.out.println(userUpdate);
+
+        User user = optionalUser.get();
+
+        user.setUsername(userUpdate.getUsername());
+        user.setEmail(userUpdate.getEmail());
+        user.setFirstName(userUpdate.getFirstName());
+        user.setLastName(userUpdate.getLastName());
+        user.setPassword(passwordEncoder.encode(userUpdate.getPassword()));
+        user.setPhoneNumber(userUpdate.getPhoneNumber());
+
+        this.userRepository.save(user);
+
+        this.imageService.updateUserImage(user, multipartFile);
+
     }
 
     public List<UserBasicDetails> getHostsForApproval() {
