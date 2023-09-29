@@ -185,6 +185,48 @@ function MyListing() {
         }
     }
 
+    function _onChangeWifi() {
+        if (listing) {
+            setListing({...listing, wifi: !listing.wifi});
+        }
+    }
+
+    function _onChangeAC() {
+        if (listing) {
+            setListing({...listing, ac: !listing.ac});
+        }
+    }
+
+    function _onChangeHeat() {
+        if (listing) {
+            setListing({...listing, heat: !listing.heat});
+        }
+    }
+
+    function _onChangeKitchen() {
+        if (listing) {
+            setListing({...listing, kitchen: !listing.kitchen});
+        }
+    }
+
+    function _onChangeTV() {
+        if (listing) {
+            setListing({...listing, tv: !listing.tv});
+        }
+    }
+
+    function _onChangeParking() {
+        if (listing) {
+            setListing({...listing, parking: !listing.parking});
+        }
+    }
+
+    function _onChangeElevator() {
+        if (listing) {
+            setListing({...listing, elevator: !listing.elevator});
+        }
+    }
+
     function _onChangeSummary(
         _event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
         newValue?: string
@@ -230,7 +272,14 @@ function MyListing() {
                 listing.living,
                 listing.party,
                 listing.pets,
-                listing.summary
+                listing.summary,
+                listing.wifi,
+                listing.ac,
+                listing.heat,
+                listing.kitchen,
+                listing.tv,
+                listing.parking,
+                listing.elevator
             );
             formData.append("listing", JSON.stringify(newListing));
         }
@@ -320,6 +369,13 @@ function MyListing() {
                     <Checkbox label="Living room" onChange={_onChangeLiving}/>
                     <Checkbox label="Party" onChange={_onChangeParty}/>
                     <Checkbox label="Pets" onChange={_onChangePets}/>
+                    <Checkbox label="Wifi" onChange={_onChangeWifi}/>
+                    <Checkbox label="AC" onChange={_onChangeAC}/>
+                    <Checkbox label="Heat" onChange={_onChangeHeat}/>
+                    <Checkbox label="Kitchen" onChange={_onChangeKitchen}/>
+                    <Checkbox label="TV" onChange={_onChangeTV}/>
+                    <Checkbox label="Parking" onChange={_onChangeParking}/>
+                    <Checkbox label="Elevator" onChange={_onChangeElevator}/>
                 </StackItem>
                 <h3 className="section-header">Summary</h3>
                 <StackItem className="summary-container">

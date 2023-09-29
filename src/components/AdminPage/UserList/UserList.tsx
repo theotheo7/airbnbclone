@@ -11,7 +11,6 @@ function UserList() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        setPage(1);
         (async function() {
             const result = await fetchUsers(page);
             setUsers(result);

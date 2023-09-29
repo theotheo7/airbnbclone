@@ -46,6 +46,13 @@ function CreateListing() {
     const [living, setLiving] = useState<boolean>(false);
     const [party, setParty] = useState<boolean>(false);
     const [pets, setPets] = useState<boolean>(false);
+    const [wifi, setWifi] = useState<boolean>(false);
+    const [ac, setAC] = useState<boolean>(false);
+    const [heat, setHeat] = useState<boolean>(false);
+    const [kitchen, setKitchen] = useState<boolean>(false);
+    const [tv, setTV] = useState<boolean>(false);
+    const [parking, setParking] = useState<boolean>(false);
+    const [elevator, setElevator] = useState<boolean>(false);
 
     const [summary, setSummary] = useState<string | undefined>("");
 
@@ -175,6 +182,34 @@ function CreateListing() {
         setPets(!pets);
     }
 
+    function _onChangeWifi() {
+        setWifi(!wifi);
+    }
+
+    function _onChangeAC() {
+        setAC(!ac);
+    }
+
+    function _onChangeHeat() {
+        setHeat(!heat);
+    }
+
+    function _onChangeKitchen() {
+        setKitchen(!kitchen);
+    }
+
+    function _onChangeTV() {
+        setTV(!tv);
+    }
+
+    function _onChangeParking() {
+        setParking(!parking);
+    }
+
+    function _onChangeElevator() {
+        setElevator(!elevator);
+    }
+
     function _onChangeSummary(
         _event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
         newValue?: string
@@ -206,8 +241,11 @@ function CreateListing() {
         const startMonth = fromDate?.getMonth() ? fromDate?.getMonth() + 1 : 1;
         const endMonth = toDate?.getMonth() ? toDate?.getMonth() + 1 : 1;
 
-        const startDate = fromDate?.getFullYear() + (startMonth < 10 ? "-0" + startMonth : "-" + startMonth) + "-" + fromDate?.getDate();
-        const endDate = toDate?.getFullYear() + (endMonth < 10 ? "-0" + endMonth : "-" + endMonth) + "-" + toDate?.getDate();
+        const startDay = fromDate?.getDate() ? fromDate?.getDate() : 1;
+        const endDay = toDate?.getDate() ? toDate?.getDate() : 1;
+
+        const startDate = fromDate?.getFullYear() + (startMonth < 10 ? "-0" + startMonth : "-" + startMonth) + (startDay < 10 ? "-0" + startDay : "-" + startDay);
+        const endDate = toDate?.getFullYear() + (endMonth < 10 ? "-0" + endMonth : "-" + endMonth) + (endDay < 10 ? "-0" + endDay : "-" + endDay)
 
         const listing = new Listing(
             loc,
@@ -224,7 +262,14 @@ function CreateListing() {
             living,
             party,
             pets,
-            summary ? summary : ""
+            summary ? summary : "",
+            wifi,
+            ac,
+            heat,
+            kitchen,
+            tv,
+            parking,
+            elevator
         );
 
         if (images) {
@@ -318,6 +363,13 @@ function CreateListing() {
                     <Checkbox label="Living room" onChange={_onChangeLiving}/>
                     <Checkbox label="Party" onChange={_onChangeParty}/>
                     <Checkbox label="Pets" onChange={_onChangePets}/>
+                    <Checkbox label="Wifi" onChange={_onChangeWifi}/>
+                    <Checkbox label="AC" onChange={_onChangeAC}/>
+                    <Checkbox label="Heat" onChange={_onChangeHeat}/>
+                    <Checkbox label="Kitchen" onChange={_onChangeKitchen}/>
+                    <Checkbox label="TV" onChange={_onChangeTV}/>
+                    <Checkbox label="Parking" onChange={_onChangeParking}/>
+                    <Checkbox label="Elevator" onChange={_onChangeElevator}/>
                 </StackItem>
                 <h3 className="section-header">Summary</h3>
                 <StackItem className="summary-container">

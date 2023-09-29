@@ -41,8 +41,11 @@ function Search() {
             const fromMonth = fromDate?.getMonth() ? fromDate?.getMonth() + 1 : 1;
             const toMonth = toDate?.getMonth() ? toDate?.getMonth() + 1 : 1;
 
-            const fDate = fromDate?.getFullYear() + (fromMonth < 10 ? "-0" + fromMonth : "-" + fromMonth) + "-" + fromDate?.getDate();
-            const tDate = toDate?.getFullYear() + (toMonth < 10 ? "-0" + toMonth : "-" + toDate) + "-" + toDate?.getDate();
+            const fromDay = fromDate?.getDate() ? fromDate?.getDate() : 1;
+            const toDay = toDate?.getDate() ? toDate?.getDate() : 1;
+
+            const fDate = fromDate?.getFullYear() + (fromMonth < 10 ? "-0" + fromMonth : "-" + fromMonth) + (fromDay < 10 ? "-0" + fromDay : "-" + fromDay);
+            const tDate = toDate?.getFullYear() + (toMonth < 10 ? "-0" + toMonth : "-" + toMonth) + (toDay < 10 ? "-0" + toDay : "-" + toDay)
 
             urlQuery = urlQuery + "&city=" + city + "&from-date=" + fDate + "&to-date=" + tDate + "&people=" + people;
             
@@ -66,7 +69,9 @@ function Search() {
                 urlQuery = urlQuery + "&elevator=true";
             
             (async function() {
+                console.log("I AM HERE!");
                 const result = await fetchResults(urlQuery, page);
+                console.log(result);
                 setResults(result);
             })();
         }
@@ -139,7 +144,7 @@ function Search() {
     }
 
     function _onClickNewSearch() {
-        setIsResults(false);
+        window.location.replace("https://localhost:8080");
     }
 
     function _onClickPrevious() {
@@ -211,7 +216,7 @@ function Search() {
                         <StackItem>
                             {results.map((result) => (
                                 <div className="listing-details-row" key={result.name}>
-                                    <img src={require("../../../../airbnbclone-backend" + result.image)} alt={result.name}/>
+                                    <img src={require("../../../../airbnbclone-backend/" + result.image)} alt={result.name} width={100} height={100}/>
                                     {result.name}
                                     <DefaultButton text="View"/>
                                 </div>

@@ -16,6 +16,13 @@ export interface IListing {
     party: boolean;
     pets: boolean;
     summary: string;
+    wifi: boolean;
+    ac: boolean;
+    heat: boolean;
+    kitchen: boolean;
+    tv: boolean;
+    parking: boolean;
+    elevator: boolean;
 }
 
 export class Listing implements IListing {
@@ -34,6 +41,13 @@ export class Listing implements IListing {
     party: boolean;
     pets: boolean;
     summary: string;
+    wifi: boolean;
+    ac: boolean;
+    heat: boolean;
+    kitchen: boolean;
+    tv: boolean;
+    parking: boolean;
+    elevator: boolean;
 
     constructor(
         location: ILocation,
@@ -50,7 +64,14 @@ export class Listing implements IListing {
         living: boolean,
         party: boolean,
         pets: boolean,
-        summary: string
+        summary: string,
+        wifi: boolean,
+        ac: boolean,
+        heat: boolean,
+        kitchen: boolean,
+        tv: boolean,
+        parking: boolean,
+        elevator: boolean
     ) {
         this.location = location;
         this.name = name;
@@ -67,5 +88,12 @@ export class Listing implements IListing {
         this.party = party;
         this.pets = pets;
         this.summary = summary;
+        this.wifi = wifi;
+        this.ac = ac;
+        this.heat = heat;
+        this.kitchen = kitchen;
+        this.tv = tv;
+        this.parking = parking;
+        this.elevator = elevator;
     }
 }

@@ -16,5 +16,12 @@ export interface IListingCompleteDetails {
     party: boolean;
     pets: boolean;
     summary: string;
+    wifi: boolean;
+    ac: boolean;
+    heat: boolean;
+    kitchen: boolean;
+    tv: boolean;
+    parking: boolean;
+    elevator: boolean;
     images: string[];
 }
