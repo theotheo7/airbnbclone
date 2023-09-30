@@ -47,3 +47,11 @@
     justify-content: center;
     padding-top: 20vh;
 }
+
+.listing-details-row {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    justify-content: space-between;
+    font-size: 25px;
+}

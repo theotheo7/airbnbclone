@@ -217,7 +217,10 @@ function Search() {
                             {results.map((result) => (
                                 <div className="listing-details-row" key={result.name}>
                                     <img src={require("../../../../airbnbclone-backend/" + result.image)} alt={result.name} width={100} height={100}/>
-                                    {result.name}
+                                    <div>{result.name}</div>
+                                    <div>{result.price + "$"}</div>
+                                    <div>{result.type === "Room" ? "Private Room" : "Entire Home"}</div>
+                                    <div>{result.beds}<img src={require("../../assets/bed.png")} alt="beds" width={20} height={20}/></div>
                                     <DefaultButton text="View"/>
                                 </div>
                             ))}
