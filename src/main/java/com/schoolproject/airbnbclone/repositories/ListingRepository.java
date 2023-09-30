@@ -36,7 +36,7 @@ public interface ListingRepository extends JpaRepository<Listing, Long>, PagingA
 
     @NonNull
     @Transactional
-    @Query("SELECT l FROM Listing l JOIN FETCH l.location JOIN FETCH l.images WHERE l.id = :id")
+    @Query("SELECT l FROM Listing l JOIN FETCH l.location JOIN FETCH l.images JOIN FETCH l.host WHERE l.id = :id")
     Optional<Listing> findById(@NonNull @Param("id") Long id);
 
 }

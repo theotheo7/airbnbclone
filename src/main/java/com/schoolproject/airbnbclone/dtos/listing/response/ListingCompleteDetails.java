@@ -1,5 +1,6 @@
 package com.schoolproject.airbnbclone.dtos.listing.response;
 
+import com.schoolproject.airbnbclone.dtos.user.response.UserBasicDetails;
 import com.schoolproject.airbnbclone.models.Image;
 import com.schoolproject.airbnbclone.models.Listing;
 import com.schoolproject.airbnbclone.models.Location;
@@ -18,6 +19,7 @@ public class ListingCompleteDetails implements Serializable {
 
     private Long id;
     private Location location;
+    private UserBasicDetails host;
     private String name;
     private Integer maxPeople;
     private BigDecimal price;
@@ -42,6 +44,7 @@ public class ListingCompleteDetails implements Serializable {
     public ListingCompleteDetails(Listing listing) {
         this.id = listing.getId();
         this.location = listing.getLocation();
+        this.host = new UserBasicDetails(listing.getHost());
         this.name = listing.getName();
         this.maxPeople = listing.getMaxPeople();
         this.price = listing.getPrice();
