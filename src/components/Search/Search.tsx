@@ -11,9 +11,12 @@ import {
 } from "@fluentui/react";
 import React, {useEffect, useState} from "react";
 import {IListingBasicDetails} from "../../models/Listing/IListingBasicDetails";
-import {fetchResults} from "../../services/ResultsService";
+import {fetchResults} from "../../services/SearchService";
+import {useNavigate} from "react-router-dom";
 
 function Search() {
+    const navigate = useNavigate();
+
     const [isResults, setIsResults] = useState<boolean>(false);
 
     const [page, setPage] = useState<number>(1)
@@ -157,6 +160,10 @@ function Search() {
         setPage(page + 1);
     }
 
+    function _onClickView(id: number) {
+        navigate("/view/listing/" + id + "?from=" + new Intl.DateTimeFormat("en-CA").format(fromDate) + "&to=" + new Intl.DateTimeFormat('en-CA').format(toDate));
+    }
+
     return (!isResults ?
         <div className="search-container">
             <Stack className="search-box">
@@ -221,7 +228,7 @@ function Search() {
                                     <div>{result.price + "$"}</div>
                                     <div>{result.type === "Room" ? "Private Room" : "Entire Home"}</div>
                                     <div>{result.beds}<img src={require("../../assets/bed.png")} alt="beds" width={20} height={20}/></div>
-                                    <DefaultButton text="View"/>
+                                    <DefaultButton text="View" onClick={() => _onClickView(result.id)}/>
                                 </div>
                             ))}
                         </StackItem>

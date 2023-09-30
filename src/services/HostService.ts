@@ -18,8 +18,8 @@ export async function fetchListings() {
     });
 }
 
-export async function fetchListing(name: string) {
-    return await fetch(ServiceEndpoints.FetchListing + "/" + name, {
+export async function fetchListing(id: string) {
+    return await fetch(ServiceEndpoints.FetchListing + "/" + id, {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + getToken()

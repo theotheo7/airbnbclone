@@ -9,6 +9,7 @@ import MyListings from "./HostPage/MyListings/MyListings";
 import CreateListing from "./HostPage/CreateListing/CreateListing";
 import MyListing from "./HostPage/MyListing/MyListing";
 import MyProfile from "./MyProfile/MyProfile";
+import ViewListing from "./ViewListing/ViewListing";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Navigation/>
                 <Routes>
                     <Route path="/" Component={Search}/>
+                    <Route path="/view/listing/:id" Component={ViewListing}/>
                     <Route path="/register" Component={Register}/>
                     <Route path="/myprofile" Component={MyProfile}/>
                     <Route path="/admin" Component={UserList}/>

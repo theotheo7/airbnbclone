@@ -1,0 +1,67 @@
+.map-container {
+    height: 20vh;
+}
+
+.listing-name {
+    display: flex;
+    justify-content: center;
+}
+
+.section-header {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 25px;
+}
+
+.carousel {
+    width: 800px !important;
+}
+
+.location-container {
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.space-container {
+    padding: 0 25px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.rules-container {
+    padding: 0 25px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.host-container {
+    padding: 0 25px;
+    gap: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.summary-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+}
+
+.booking-button {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}

@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Search listings finalized&#10;Need to add booking functionality&#10;Work on JSON and XML exports and then reviews/matrix factorization&#10;45 hours to go&#10;We can do this bbyyyyyy">
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Update listing response to bring all the required fields">
+      <change afterPath="$PROJECT_DIR$/src/components/ViewListing/ViewListing.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ViewListing/ViewListing.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Search/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Listing/IListingBasicDetails.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Listing/IListingBasicDetails.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Listing/IListingCompleteDetails.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Listing/IListingCompleteDetails.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/HostService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/HostService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ResultsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/SearchService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +129,7 @@
       <workItem from="1694696376937" duration="28517000" />
       <workItem from="1695291931462" duration="18356000" />
       <workItem from="1695811366504" duration="39808000" />
-      <workItem from="1695918999257" duration="28478000" />
+      <workItem from="1695918999257" duration="37396000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -342,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696030974763</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Update listing response to bring all the required fields">
+      <option name="closed" value="true" />
+      <created>1696061360949</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1696061360949</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +385,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Typescript,&#10;Enabled ssl/tls with self-signed certificate,&#10;Added Fluent UI,&#10;Noticed some deprecated dependencies that might need fixing..." />
     <MESSAGE value="Added models for Listing and Location and created a service to send a post request to the backend to create a hardcoded Listing" />
     <MESSAGE value="Very simple navigation bar with login fields" />
     <MESSAGE value="Login functionality and token storing in session storage" />
@@ -397,6 +409,7 @@
     <MESSAGE value="My listing update fix" />
     <MESSAGE value="Search listings page and fetch result service" />
     <MESSAGE value="Search listings finalized&#10;Need to add booking functionality&#10;Work on JSON and XML exports and then reviews/matrix factorization&#10;45 hours to go&#10;We can do this bbyyyyyy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search listings finalized&#10;Need to add booking functionality&#10;Work on JSON and XML exports and then reviews/matrix factorization&#10;45 hours to go&#10;We can do this bbyyyyyy" />
+    <MESSAGE value="Update listing response to bring all the required fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update listing response to bring all the required fields" />
   </component>
 </project>

@@ -1,7 +1,10 @@
 import {ILocation} from "../Location";
+import {IUserBasicDetails} from "../User/IUserBasicDetails";
 
 export interface IListingCompleteDetails {
+    id: number;
     location: ILocation;
+    host: IUserBasicDetails;
     name: string;
     startDate: string;
     endDate: string;
