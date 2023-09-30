@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>, PagingAndSortingRepository<User, Integer>, CustomUserRepository {
+public interface UserRepository extends JpaRepository<User, Long>, PagingAndSortingRepository<User, Long>, CustomUserRepository {
 
     Optional<User> findByUsername(String username);
 

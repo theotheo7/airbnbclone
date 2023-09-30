@@ -14,7 +14,7 @@ import org.springframework.lang.NonNull;
 import java.util.List;
 import java.util.Optional;
 
-public interface ListingRepository extends JpaRepository<Listing, Integer>, PagingAndSortingRepository<Listing, Integer>, CustomListingRepository {
+public interface ListingRepository extends JpaRepository<Listing, Long>, PagingAndSortingRepository<Listing, Long>, CustomListingRepository {
 
     @Transactional
     @Query("SELECT l FROM Listing l")
@@ -28,10 +28,15 @@ public interface ListingRepository extends JpaRepository<Listing, Integer>, Pagi
     @Modifying
     @Transactional
     @Query("DELETE FROM Listing l WHERE l.id = ?1")
-    Integer removeListingById(Integer Id);
+    void removeListingById(Integer Id);
 
     @Transactional
     @Query("SELECT l FROM Listing l JOIN FETCH l.location JOIN FETCH l.images WHERE l.name = :name")
     Optional<Listing> findByName(@Param("name") String name);
+
+    @NonNull
+    @Transactional
+    @Query("SELECT l FROM Listing l JOIN FETCH l.location JOIN FETCH l.images WHERE l.id = :id")
+    Optional<Listing> findById(@NonNull @Param("id") Long id);
 
 }

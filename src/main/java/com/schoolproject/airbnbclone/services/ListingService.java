@@ -4,7 +4,6 @@ import com.schoolproject.airbnbclone.dtos.listing.request.ListingRequest;
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingBasicDetails;
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingCompleteDetails;
 import com.schoolproject.airbnbclone.exceptions.ListingException;
-import com.schoolproject.airbnbclone.exceptions.UserException;
 import com.schoolproject.airbnbclone.models.Listing;
 import com.schoolproject.airbnbclone.models.User;
 import com.schoolproject.airbnbclone.repositories.ListingRepository;
@@ -77,13 +76,13 @@ public class ListingService {
                 .collect(Collectors.toList());
     }
 
-    public ListingCompleteDetails getListing(String name) {
-        Optional<Listing> optionalListing = this.listingRepository.findByName(name);
+    public ListingCompleteDetails getListing(Long id) {
+        Optional<Listing> optionalListing = this.listingRepository.findById(id);
 
         if (optionalListing.isPresent()) {
             return new ListingCompleteDetails(optionalListing.get());
         } else {
-            throw new UserException(name, ListingException.LISTING_NOT_FOUND, HttpStatus.NOT_FOUND);
+            throw new ListingException(id.toString(), ListingException.LISTING_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
     }
 

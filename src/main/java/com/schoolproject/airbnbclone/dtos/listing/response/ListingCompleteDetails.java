@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ListingCompleteDetails implements Serializable {
 
+    private Long id;
     private Location location;
     private String name;
     private Integer maxPeople;
@@ -29,9 +30,17 @@ public class ListingCompleteDetails implements Serializable {
     private Boolean party;
     private Boolean pets;
     private String summary;
+    private Boolean wifi;
+    private Boolean ac;
+    private Boolean heat;
+    private Boolean kitchen;
+    private Boolean tv;
+    private Boolean parking;
+    private Boolean elevator;
     private List<String> images;
 
     public ListingCompleteDetails(Listing listing) {
+        this.id = listing.getId();
         this.location = listing.getLocation();
         this.name = listing.getName();
         this.maxPeople = listing.getMaxPeople();
@@ -45,6 +54,13 @@ public class ListingCompleteDetails implements Serializable {
         this.party = listing.getParty();
         this.pets = listing.getPets();
         this.summary = listing.getSummary();
+        this.wifi = listing.getWifi();
+        this.ac = listing.getAc();
+        this.heat = listing.getHeat();
+        this.kitchen = listing.getKitchen();
+        this.tv = listing.getTv();
+        this.parking = listing.getParking();
+        this.elevator = listing.getElevator();
         this.images = listing.getImages().stream()
                 .map(Image::getPath)
                 .toList();

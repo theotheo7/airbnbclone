@@ -41,9 +41,9 @@ public class HostController {
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/listing/{name}", method = RequestMethod.GET)
-    public ResponseEntity<ListingCompleteDetails> getListing(@PathVariable String name) {
-        return new ResponseEntity<>(this.listingService.getListing(name), HttpStatus.OK);
+    @RequestMapping(value = "/listing/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ListingCompleteDetails> getListing(@PathVariable Long id) {
+        return new ResponseEntity<>(this.listingService.getListing(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/listing", method = RequestMethod.PUT)

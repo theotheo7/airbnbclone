@@ -1,13 +1,12 @@
 package com.schoolproject.airbnbclone.controllers;
 
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingBasicDetails;
+import com.schoolproject.airbnbclone.dtos.listing.response.ListingCompleteDetails;
 import com.schoolproject.airbnbclone.services.ListingService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -43,6 +42,11 @@ public class SearchController {
         LocalDate toDate = LocalDate.parse(tDate, dtf);
         List<ListingBasicDetails> listingList = this.listingService.searchListings(page-1, city, fromDate, toDate, people, type, maxPrice, wifi, ac, heat, kitchen, tv, parking, elevator);
         return ResponseEntity.ok(listingList);
+    }
+
+    @RequestMapping(value = "/listing/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ListingCompleteDetails> getListingComplete(@PathVariable Long id) {
+        return new ResponseEntity<>(this.listingService.getListing(id), HttpStatus.OK);
     }
 
 }
