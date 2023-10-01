@@ -48,3 +48,17 @@ export async function approveHost(username: string) {
         return undefined;
     })
 }
+
+export async function exportListings(json: boolean) {
+    return await fetch(ServiceEndpoints.Export + "?json=" + json, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + getToken(),
+        }
+    }).then(async (resp) => {
+        return resp;
+    }).catch((error) => {
+        console.log(error);
+        return undefined;
+    })
+}

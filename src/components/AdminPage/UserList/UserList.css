@@ -1,3 +1,10 @@
+.export-buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 10px;
+}
+
 .user-list-container {
     padding: 35px 25px;
 }

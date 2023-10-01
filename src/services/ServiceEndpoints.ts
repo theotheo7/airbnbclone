@@ -9,6 +9,7 @@ enum ServiceEndpoints {
     FetchUsers = "https://localhost:8443/api/admin/users",
     FetchUser = "https://localhost:8443/api/admin/user",
     ApproveHost = "https://localhost:8443/api/admin/users/approve",
+    Export = "https://localhost:8443/api/admin/export",
 
     // Host
     FetchListings = "https://localhost:8443/api/host/listings",

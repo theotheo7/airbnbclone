@@ -1,6 +1,6 @@
 import './UserList.css'
 import {useEffect, useState} from "react";
-import {fetchUsers} from "../../../services/AdminService";
+import {exportListings, fetchUsers} from "../../../services/AdminService";
 import {IUserBasicDetails} from "../../../models/User/IUserBasicDetails";
 import {DefaultButton, Stack, StackItem} from "@fluentui/react";
 import {useNavigate} from "react-router-dom";
@@ -17,6 +17,46 @@ function UserList() {
         })();
     }, [page]);
 
+    const _onClickExportJSON = async () => {
+        try {
+            const response = await exportListings(true);
+            if (response) {
+                const blob = await response.blob();
+
+                const url = window.URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'ExportListings.json';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        } catch (error) {
+            console.error('Error', error);
+        }
+    }
+
+    const _onClickExportXML = async () => {
+        try {
+            const response = await exportListings(false);
+            if (response) {
+                const blob = await response.blob();
+
+                const url = window.URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'ExportListings.xml';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        } catch (error) {
+            console.error('Error', error);
+        }
+    }
+
     function _onClickPrev() {
         if (page > 1) {
             setPage(page - 1);
@@ -30,6 +70,10 @@ function UserList() {
     return (
         <div>
             <Stack>
+                <StackItem className="export-buttons">
+                    <DefaultButton text="Export JSON" onClick={_onClickExportJSON}/>
+                    <DefaultButton text="Export XML" onClick={_onClickExportXML}/>
+                </StackItem>
                 <StackItem className="user-list-container">
                     <div>
 
