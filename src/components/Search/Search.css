@@ -1,0 +1,57 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.search-box {
+    width: 50vw;
+    top: 40%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.field-row {
+    display: flex;
+    gap: 20px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+.results-container {
+    padding: 20px 25px;
+}
+
+.new-search-button {
+    display: flex;
+    justify-content: center;
+}
+
+.page-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.no-results-message {
+    display: flex;
+    justify-content: center;
+    padding-top: 20vh;
+}
+
+.listing-details-row {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    justify-content: space-between;
+    font-size: 25px;
+}

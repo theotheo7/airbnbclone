@@ -1,0 +1,27 @@
+.user-details-container {
+    padding: 35px 25px;
+}
+
+.user-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.passwords-container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.role-list {
+    display: flex;
+    gap: 10px;
+}
+
+.approve-button {
+    height: max-content;
+    display: flex;
+    flex-direction: row-reverse;
+}

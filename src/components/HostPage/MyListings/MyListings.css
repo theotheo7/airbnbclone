@@ -1,0 +1,17 @@
+.listings-list-container {
+    padding: 35px 25px;
+}
+
+.create-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.listing-details-row {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    justify-content: space-between;
+}
