@@ -17,8 +17,8 @@ function MyListings() {
         })();
     }, []);
 
-    function _onClickView(name: string) {
-        navigate("/host/listing/" + name);
+    function _onClickView(id: number) {
+        navigate("/host/listing/" + id);
     }
 
     function _onClickCreate() {
@@ -36,7 +36,7 @@ function MyListings() {
                         <div className="listing-details-row" key={listing.name}>
                             <img src={require("../../../../../airbnbclone-backend/" + listing.image)} alt={listing.name} width={100} height={100}/>
                             <div>{listing.name}</div>
-                            <DefaultButton text="View listing" onClick={() => _onClickView(listing.name)}/>
+                            <DefaultButton text="View listing" onClick={() => _onClickView(listing.id)}/>
                         </div>
                     ))}
                 </StackItem>

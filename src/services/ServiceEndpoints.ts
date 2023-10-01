@@ -18,7 +18,13 @@ enum ServiceEndpoints {
 
     // Search
     FetchResults = "https://localhost:8443/api/search/listings",
-    FetchListingFromSearch = "https://localhost:8443/api/search/listing"
+    FetchListingFromSearch = "https://localhost:8443/api/search/listing",
+
+    // Messages
+    SendMessage = "https://localhost:8443/api/user/messages",
+    FetchMessages = "https://localhost:8443/api/user/messages",
+    DeleteMessage = "https://localhost:8443/api/user/messages",
+    ReadMessage = "https://localhost:8443/api/user/messages"
 }
 
 export default ServiceEndpoints;

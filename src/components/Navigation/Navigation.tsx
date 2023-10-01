@@ -76,6 +76,10 @@ function Navigation() {
         navigate("/myprofile");
     }
 
+    function _onClickMessages() {
+        navigate("/messages");
+    }
+
     function _onClickLogout() {
         logout();
         navigate("/");
@@ -112,6 +116,11 @@ function Navigation() {
                             text="Profile"
                             label="Profile"
                             onClick={_onClickProfile}
+                        />
+                        <DefaultButton
+                            text="Messages"
+                            label="Messages"
+                            onClick={_onClickMessages}
                         />
                         <DefaultButton
                             text="Logout"

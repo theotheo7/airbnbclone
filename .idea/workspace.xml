@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Update listing response to bring all the required fields">
-      <change afterPath="$PROJECT_DIR$/src/components/ViewListing/ViewListing.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ViewListing/ViewListing.tsx" afterDir="false" />
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="View listing full details">
+      <change afterPath="$PROJECT_DIR$/src/components/Messages/Messages.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Messages/Messages.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Messages/NewMessage/NewMessage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Messages/NewMessage/NewMessage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Message/MessagePosting.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Message/ReceivedMessage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Message/SentMessage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Listing/IListingCompleteDetails.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Listing/IListingCompleteDetails.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HostPage/MyListings/MyListings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HostPage/MyListings/MyListings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/Register.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/Register.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/HostService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/HostService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/ResultsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/SearchService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UserService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +87,11 @@
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\models\Message" />
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components\Search" />
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\components\Search\SearchPage" />
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\models\User" />
       <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\models\Listing" />
-      <recent name="C:\Users\thoth\Documents\School\FullStackProject\airbnbclone-frontend\src\assets" />
     </key>
   </component>
   <component name="RunManager">
@@ -129,7 +135,7 @@
       <workItem from="1694696376937" duration="28517000" />
       <workItem from="1695291931462" duration="18356000" />
       <workItem from="1695811366504" duration="39808000" />
-      <workItem from="1695918999257" duration="37396000" />
+      <workItem from="1695918999257" duration="50977000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -355,7 +361,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696061360949</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="View listing full details">
+      <option name="closed" value="true" />
+      <created>1696071893749</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1696071893749</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +399,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added models for Listing and Location and created a service to send a post request to the backend to create a hardcoded Listing" />
     <MESSAGE value="Very simple navigation bar with login fields" />
     <MESSAGE value="Login functionality and token storing in session storage" />
     <MESSAGE value="Login/Logout functionality&#10;Added username in session storage" />
@@ -410,6 +423,7 @@
     <MESSAGE value="Search listings page and fetch result service" />
     <MESSAGE value="Search listings finalized&#10;Need to add booking functionality&#10;Work on JSON and XML exports and then reviews/matrix factorization&#10;45 hours to go&#10;We can do this bbyyyyyy" />
     <MESSAGE value="Update listing response to bring all the required fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update listing response to bring all the required fields" />
+    <MESSAGE value="View listing full details" />
+    <option name="LAST_COMMIT_MESSAGE" value="View listing full details" />
   </component>
 </project>

@@ -1,0 +1,21 @@
+.new-message-container {
+    display: flex;
+    justify-content: center;
+}
+
+.new-message-box {
+    width: 50vh;
+    top: 30%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.send-button {
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}

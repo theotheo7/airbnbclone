@@ -1,0 +1,24 @@
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 15px
+}
+
+.messages-list-container {
+    padding: 35px 25px;
+}
+
+.sent-messages-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-container {
+    padding: 20px;
+}
+
+.modal-top-row {
+    display: flex;
+    justify-content: space-between;
+}

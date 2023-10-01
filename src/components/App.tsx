@@ -10,6 +10,8 @@ import CreateListing from "./HostPage/CreateListing/CreateListing";
 import MyListing from "./HostPage/MyListing/MyListing";
 import MyProfile from "./MyProfile/MyProfile";
 import ViewListing from "./ViewListing/ViewListing";
+import Messages from "./Messages/Messages";
+import NewMessage from "./Messages/NewMessage/NewMessage";
 
 function App() {
     return (
@@ -21,6 +23,8 @@ function App() {
                     <Route path="/view/listing/:id" Component={ViewListing}/>
                     <Route path="/register" Component={Register}/>
                     <Route path="/myprofile" Component={MyProfile}/>
+                    <Route path="/messages" Component={Messages}/>
+                    <Route path="/messages/new" Component={NewMessage}/>
                     <Route path="/admin" Component={UserList}/>
                     <Route path="/admin/user/:username" Component={UserDetails}/>
                     <Route path="/host" Component={MyListings}/>

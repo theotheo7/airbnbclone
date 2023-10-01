@@ -42,9 +42,7 @@ export async function createListing(formData: FormData) {
         body: formData
     })
         .then(async (resp) => {
-            const response = await resp.json();
-            console.log(response);
-            return response;
+            return await resp.json();
         })
         .catch((error) => {
             console.log(error.message);
