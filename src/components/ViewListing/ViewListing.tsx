@@ -6,12 +6,14 @@ import {Icon, LatLng} from "leaflet";
 import markerIconPng from "../../assets/marker-icon.png";
 import React, {useEffect, useState} from "react";
 import {IListingCompleteDetails} from "../../models/Listing/IListingCompleteDetails";
-import {useParams, useSearchParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {fetchListingFromSearch} from "../../services/SearchService";
 import {Carousel} from "react-responsive-carousel";
 import {getRoles} from "../../services/UserService";
+import {book} from "../../services/GuestService";
 
 function ViewListing() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [dateParams] = useSearchParams();
     const [fromDate, setFromDate] = useState<Date>();
@@ -45,6 +47,27 @@ function ViewListing() {
             }
         })();
     }, [listing, id, dateParams]);
+
+    async function _onClickBook() {
+        if (listing) {
+            try {
+                const startMonth = fromDate?.getMonth() ? fromDate?.getMonth() + 1 : 1;
+                const endMonth = toDate?.getMonth() ? toDate?.getMonth() + 1 : 1;
+
+                const startDay = fromDate?.getDate() ? fromDate?.getDate() : 1;
+                const endDay = toDate?.getDate() ? toDate?.getDate() : 1;
+
+                const fDate = fromDate?.getFullYear() + (startMonth < 10 ? "-0" + startMonth : "-" + startMonth) + (startDay < 10 ? "-0" + startDay : "-" + startDay);
+                const tDate = toDate?.getFullYear() + (endMonth < 10 ? "-0" + endMonth : "-" + endMonth) + (endDay < 10 ? "-0" + endDay : "-" + endDay)
+
+                await book(listing.id, fDate, tDate);
+                console.log("Success");
+                navigate("/");
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    }
 
     return (
         <div>
@@ -117,7 +140,7 @@ function ViewListing() {
                 <h3 className="section-header">Total nights: {fromDate && toDate ? getNights(fromDate, toDate) : 1}</h3>
                 <h3 className="section-header">Total price: {fromDate && toDate && listing?.price ? getNights(fromDate, toDate) * listing.price + "$" : 0}</h3>
                 <StackItem className="booking-button">
-                    <DefaultButton style={{width: '5vw'}} text="Book" disabled={isNotGuest()}/>
+                    <DefaultButton style={{width: '5vw'}} text="Book" disabled={isNotGuest()} onClick={_onClickBook}/>
                 </StackItem>
             </Stack>
         </div>

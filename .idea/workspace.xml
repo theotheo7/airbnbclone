@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Messaging functionality">
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="XML and JSON export functionality">
+      <change afterPath="$PROJECT_DIR$/src/services/GuestService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminPage/UserList/UserList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/AdminService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/AdminService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewListing/ViewListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewListing/ViewListing.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,9 +21,9 @@
         <option value="JavaScript File" />
         <option value="tsconfig.json" />
         <option value="HTTP Public Environment File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -125,7 +124,7 @@
       <workItem from="1694696376937" duration="28517000" />
       <workItem from="1695291931462" duration="18356000" />
       <workItem from="1695811366504" duration="39808000" />
-      <workItem from="1695918999257" duration="56274000" />
+      <workItem from="1695918999257" duration="59216000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -367,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696171024015</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="XML and JSON export functionality">
+      <option name="closed" value="true" />
+      <created>1696184198533</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1696184198533</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +404,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Login functionality and token storing in session storage" />
     <MESSAGE value="Login/Logout functionality&#10;Added username in session storage" />
     <MESSAGE value="Registration functionality" />
     <MESSAGE value="Added clickable logo on navigation bar that redirects to home" />
@@ -422,6 +428,7 @@
     <MESSAGE value="Update listing response to bring all the required fields" />
     <MESSAGE value="View listing full details" />
     <MESSAGE value="Messaging functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Messaging functionality" />
+    <MESSAGE value="XML and JSON export functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="XML and JSON export functionality" />
   </component>
 </project>

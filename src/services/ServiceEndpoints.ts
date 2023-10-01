@@ -17,6 +17,9 @@ enum ServiceEndpoints {
     CreateListing = "https://localhost:8443/api/host/listing/create",
     UpdateListing = "https://localhost:8443/api/host/listing",
 
+    // Guest
+    Book = "https://localhost:8443/api/guest/book",
+
     // Search
     FetchResults = "https://localhost:8443/api/search/listings",
     FetchListingFromSearch = "https://localhost:8443/api/search/listing",
