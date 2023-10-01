@@ -197,6 +197,10 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO role (id, name) VALUES (1, 'ADMIN');
+INSERT INTO role (id, name) VALUES (2, 'HOST');
+INSERT INTO role (id, name) VALUES (3, 'GUEST');
+
 --
 -- Table structure for table `search_history`
 --
@@ -236,6 +240,8 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO user (email, first_name, host_approved, last_name, password, phone_number, username, host_rating) VALUES ('admin@admin', 'admin', true, 'admin', 'password', '123', 'admin', 0.0);
+
 --
 -- Table structure for table `users_roles`
 --
@@ -252,6 +258,10 @@ CREATE TABLE `users_roles` (
   CONSTRAINT `FKt4v0rrweyk393bdgt107vdx0x` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+INSERT INTO users_roles (user_id, role_id) VALUES (1, 1);
+INSERT INTO users_roles (user_id, role_id) VALUES (1, 2);
+INSERT INTO users_roles (user_id, role_id) VALUES (1, 3);
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
