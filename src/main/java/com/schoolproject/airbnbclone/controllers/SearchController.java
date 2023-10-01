@@ -6,6 +6,7 @@ import com.schoolproject.airbnbclone.services.ListingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -45,8 +46,8 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/listing/{id}", method = RequestMethod.GET)
-    public ResponseEntity<ListingCompleteDetails> getListingComplete(@PathVariable Long id) {
-        return new ResponseEntity<>(this.listingService.getListing(id), HttpStatus.OK);
+    public ResponseEntity<ListingCompleteDetails> getListingComplete(Authentication authentication, @PathVariable Long id) {
+        return new ResponseEntity<>(this.listingService.getListing(authentication, id), HttpStatus.OK);
     }
 
 }

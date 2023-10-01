@@ -11,6 +11,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -33,5 +34,8 @@ public interface UserRepository extends JpaRepository<User, Long>, PagingAndSort
     @Modifying
     @Query("UPDATE User u SET u.hostApproved = ?2 WHERE u.username = ?1")
     Integer approveByUsername(String username, Boolean approvalStatus);
+
+    @Query("SELECT u.id FROM User u ORDER BY u.id ASC")
+    List<Long> findSortedIDs();
 
 }

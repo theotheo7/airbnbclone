@@ -32,6 +32,7 @@ public class CustomListingRepositoryImpl implements CustomListingRepository {
         Root<Listing> listingRoot = criteriaQuery.from(Listing.class);
         listingRoot.fetch("location", JoinType.INNER);
         listingRoot.fetch("images", JoinType.INNER);
+        listingRoot.fetch("host", JoinType.INNER);
         criteriaQuery.select(listingRoot);
         criteriaQuery.distinct(true);
         criteriaQuery.orderBy(QueryUtils.toOrders(pageRequest.getSort(), listingRoot, criteriaBuilder));

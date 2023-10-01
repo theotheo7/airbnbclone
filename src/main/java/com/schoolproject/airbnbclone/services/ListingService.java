@@ -6,10 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.schoolproject.airbnbclone.dtos.listing.request.ListingRequest;
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingBasicDetails;
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingCompleteDetails;
 import com.schoolproject.airbnbclone.exceptions.ListingException;
+import com.schoolproject.airbnbclone.exceptions.UserException;
 import com.schoolproject.airbnbclone.models.Listing;
 import com.schoolproject.airbnbclone.models.User;
 import com.schoolproject.airbnbclone.repositories.ListingRepository;
@@ -38,6 +40,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
@@ -50,6 +53,7 @@ public class ListingService {
     private final UserRepository userRepository;
     private final ImageService imageService;
     private final AvailabilityService availabilityService;
+    private final SearchHistoryService searchHistoryService;
 
     @Transactional
     public void createListing(Authentication authentication, ListingRequest listingRequest, MultipartFile[] multipartFiles) {
@@ -91,14 +95,24 @@ public class ListingService {
                 .collect(Collectors.toList());
     }
 
-    public ListingCompleteDetails getListing(Long id) {
+    public ListingCompleteDetails getListing(Authentication authentication, Long id) {
         Optional<Listing> optionalListing = this.listingRepository.findById(id);
 
-        if (optionalListing.isPresent()) {
-            return new ListingCompleteDetails(optionalListing.get());
-        } else {
+        if (optionalListing.isEmpty()) {
             throw new ListingException(id.toString(), ListingException.LISTING_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
+
+        Listing listing = optionalListing.get();
+
+        if (authentication != null && !Objects.equals(authentication.getName(), listing.getHost().getUsername())) {
+            Optional<User> optionalUser = this.userRepository.findByUsername(authentication.getName());
+            if (optionalUser.isEmpty()) {
+                throw new UserException(UserException.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
+            }
+            this.searchHistoryService.recordUserInteraction(optionalUser.get(), listing);
+        }
+
+        return new ListingCompleteDetails(listing);
     }
 
     public void updateListing(Authentication authentication, ListingRequest listingRequest, MultipartFile[] multipartFiles) {
@@ -157,6 +171,8 @@ public class ListingService {
 
         List<Listing> listingList = listingPage.getContent();
 
+        System.out.println(listingList.size());
+
         return listingList.stream()
                 .map(ListingBasicDetails::new)
                 .collect(Collectors.toList());
@@ -213,6 +229,7 @@ public class ListingService {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.registerModule(new JavaTimeModule());
         objectMapper.setTimeZone(timeZone);
         return objectMapper;
     }

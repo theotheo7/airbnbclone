@@ -37,6 +37,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(request -> request.requestMatchers("api/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/api/host/**").hasAuthority("HOST")
                         .requestMatchers("/api/user/messages/**").hasAnyAuthority("ADMIN", "HOST", "GUEST")
+                        .requestMatchers("/api/guest/**", "api/recommendation/**").hasAuthority("GUEST")
                         .requestMatchers("api/user/**", "/api/search/**").permitAll().anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider).addFilterBefore(

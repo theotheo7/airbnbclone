@@ -16,10 +16,6 @@ import java.util.Optional;
 
 public interface ListingRepository extends JpaRepository<Listing, Long>, PagingAndSortingRepository<Listing, Long>, CustomListingRepository {
 
-    @Transactional
-    @Query("SELECT l FROM Listing l")
-    List<Listing> fetchAllListings();
-
     @NonNull
     @Transactional
     @Query("SELECT l FROM Listing l JOIN FETCH l.location JOIN FETCH l.images JOIN FETCH l.host WHERE l.host.username = :username")
@@ -38,5 +34,11 @@ public interface ListingRepository extends JpaRepository<Listing, Long>, PagingA
     @Transactional
     @Query("SELECT l FROM Listing l JOIN FETCH l.location JOIN FETCH l.images JOIN FETCH l.host WHERE l.id = :id")
     Optional<Listing> findById(@NonNull @Param("id") Long id);
+
+    @Query("SELECT DISTINCT l FROM Listing l JOIN FETCH l.location JOIN FETCH l.images WHERE l.id IN ?1")
+    List<Listing> findRecommendationsByIds(List<Long> ids);
+
+    @Query("SELECT l.id FROM Listing l")
+    List<Long> findListingIds(Pageable pageable);
 
 }
