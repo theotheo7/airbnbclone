@@ -65,6 +65,7 @@ public class UserService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .roles(roles)
                 .hostApproved(!roles.contains(host))
+                .hostRating(0.0)
                 .build();
         userRepository.save(user);
         this.imageService.uploadUserImage(user, multipartFile);

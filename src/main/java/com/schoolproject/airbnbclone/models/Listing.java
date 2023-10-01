@@ -39,6 +39,12 @@ public class Listing {
     @JoinColumn(name = "host_id", referencedColumnName = "id")
     private User host;
 
+    @OneToMany(mappedBy = "listing")
+    private List<Booking> bookings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "listing")
+    private List<Review> reviews = new ArrayList<>();
+
     @Column(nullable = false)
     private Integer maxPeople;
 

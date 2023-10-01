@@ -1,5 +1,11 @@
 package com.schoolproject.airbnbclone.services;
 
+import com.ctc.wstx.api.WstxOutputProperties;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import com.schoolproject.airbnbclone.dtos.listing.request.ListingRequest;
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingBasicDetails;
 import com.schoolproject.airbnbclone.dtos.listing.response.ListingCompleteDetails;
@@ -9,22 +15,31 @@ import com.schoolproject.airbnbclone.models.User;
 import com.schoolproject.airbnbclone.repositories.ListingRepository;
 import com.schoolproject.airbnbclone.repositories.UserRepository;
 import com.schoolproject.airbnbclone.specifications.ListingSpecificationBuilder;
+import com.schoolproject.airbnbclone.views.json.ListingJSON;
+import com.schoolproject.airbnbclone.views.xml.ListingXML;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 @Service
@@ -149,5 +164,56 @@ public class ListingService {
 
     public void deleteListing(Integer Id) {
         listingRepository.removeListingById(Id);
+    }
+
+    public ResponseEntity<InputStreamResource> export(Boolean asJSON) throws JsonProcessingException {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        InputStream stringInputStream;
+        InputStreamResource inputStreamResource;
+
+        final Integer EXPORT_MAX_RESULTS = 500;
+
+        List<Listing> listings = this.listingRepository.export(EXPORT_MAX_RESULTS);
+
+        if (asJSON) {
+            ObjectMapper objectMapper = getJSONMapper(TimeZone.getDefault());
+            List<ListingJSON> listingJSONList = listings.stream()
+                    .map(ListingJSON::new)
+                    .toList();
+            String jsonString = objectMapper.writeValueAsString(listingJSONList);
+            stringInputStream = new ByteArrayInputStream(jsonString.getBytes());
+            inputStreamResource = new InputStreamResource(stringInputStream);
+            httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+            httpHeaders.setContentDispositionFormData("attachment", "ExportListings.json");
+        } else {
+            XmlMapper xmlMapper = getXMLMapper(TimeZone.getDefault());
+            List<ListingXML> listingXMLList = listings.stream()
+                    .map(ListingXML::new)
+                    .toList();
+            String xmlString = xmlMapper.writeValueAsString(listingXMLList);
+            stringInputStream = new ByteArrayInputStream(xmlString.getBytes());
+            inputStreamResource = new InputStreamResource(stringInputStream);
+            httpHeaders.setContentType(MediaType.APPLICATION_XML);
+            httpHeaders.setContentDispositionFormData("attachment", "ExportListings.xml");
+        }
+        return new ResponseEntity<>(inputStreamResource, httpHeaders, HttpStatus.OK);
+    }
+
+    private XmlMapper getXMLMapper(TimeZone timeZone) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.getFactory().getXMLOutputFactory().setProperty(WstxOutputProperties.P_AUTOMATIC_END_ELEMENTS, false);
+        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        xmlMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+        xmlMapper.setTimeZone(timeZone);
+        return xmlMapper;
+    }
+
+    private ObjectMapper getJSONMapper(TimeZone timeZone) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.setTimeZone(timeZone);
+        return objectMapper;
     }
 }

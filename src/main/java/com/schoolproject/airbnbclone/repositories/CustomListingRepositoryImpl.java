@@ -3,6 +3,7 @@ package com.schoolproject.airbnbclone.repositories;
 import com.schoolproject.airbnbclone.models.Listing;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.JoinType;
@@ -38,6 +39,35 @@ public class CustomListingRepositoryImpl implements CustomListingRepository {
         List<Listing> listings = entityManager.createQuery(criteriaQuery).getResultList();
         return new PageImpl<>(listings, pageRequest, listings.size());
 
+    }
+
+    @Override
+    public List<Listing> export(Integer maxResults) {
+        TypedQuery<Listing> typedQuery = entityManager.createQuery("SELECT DISTINCT l " +
+                "FROM Listing l " +
+                "LEFT JOIN FETCH l.location AS location " +
+                "LEFT JOIN FETCH l.host AS host " +
+                "LEFT JOIN FETCH host.hostReviews AS hostReviews " +
+                "ORDER BY l.id ASC", Listing.class).setMaxResults(maxResults);
+        List<Listing> listings = typedQuery.getResultList();
+
+        typedQuery = entityManager.createQuery("SELECT DISTINCT l " +
+                "FROM Listing l " +
+                "LEFT JOIN FETCH l.bookings AS bookings " +
+                "LEFT JOIN FETCH bookings.guest AS guest " +
+                "WHERE l in :listings", Listing.class)
+                .setParameter("listings", listings);
+
+        listings = typedQuery.getResultList();
+
+        typedQuery = entityManager.createQuery("SELECT DISTINCT l " +
+                        "FROM Listing l " +
+                        "LEFT JOIN FETCH l.reviews AS reviews " +
+                        "WHERE l in :listings", Listing.class)
+                .setParameter("listings", listings);
+
+        listings = typedQuery.getResultList();
+        return listings;
     }
 
 }

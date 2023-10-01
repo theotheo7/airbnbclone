@@ -23,7 +23,7 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "guest_id", referencedColumnName = "id")
-    private User user;
+    private User guest;
 
     @ManyToOne
     @JoinColumn(name = "listing_id", referencedColumnName = "id")
@@ -34,5 +34,8 @@ public class Booking {
 
     @Column(nullable = false)
     private LocalDate toDate;
+
+    @Column(nullable = false)
+    private LocalDate bookingDate;
 
 }

@@ -52,11 +52,17 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "host")
     private Set<Listing> listings;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "guest")
     private List<Booking> bookings;
 
     @Column(nullable = false)
     private boolean hostApproved;
+
+    @Column(nullable = false)
+    private Double hostRating;
+
+    @OneToMany(mappedBy = "host")
+    private List<Review> hostReviews;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
