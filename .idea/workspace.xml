@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="XML and JSON export functionality">
-      <change afterPath="$PROJECT_DIR$/src/services/GuestService.ts" afterDir="false" />
+    <list default="true" id="6f5388f4-dd90-473c-ad68-af5c905dfd5a" name="Changes" comment="Get recommendation functionality">
+      <change afterPath="$PROJECT_DIR$/src/components/Recommendations/Recommendations.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Recommendations/Recommendations.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ViewListing/ViewListing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewListing/ViewListing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/GuestService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GuestService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ServiceEndpoints.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,9 +24,9 @@
         <option value="JavaScript File" />
         <option value="tsconfig.json" />
         <option value="HTTP Public Environment File" />
+        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
         <option value="CSS File" />
-        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -124,7 +127,7 @@
       <workItem from="1694696376937" duration="28517000" />
       <workItem from="1695291931462" duration="18356000" />
       <workItem from="1695811366504" duration="39808000" />
-      <workItem from="1695918999257" duration="59216000" />
+      <workItem from="1695918999257" duration="59863000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend - Initial Commit">
       <option name="closed" value="true" />
@@ -374,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696184198533</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Booking functionality">
+      <option name="closed" value="true" />
+      <created>1696190355341</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1696190355341</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,8 +415,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Login/Logout functionality&#10;Added username in session storage" />
-    <MESSAGE value="Registration functionality" />
     <MESSAGE value="Added clickable logo on navigation bar that redirects to home" />
     <MESSAGE value="Updated frontend to send formdata requests to the backend to handle user registration with image" />
     <MESSAGE value="Added search and admin components" />
@@ -429,6 +438,8 @@
     <MESSAGE value="View listing full details" />
     <MESSAGE value="Messaging functionality" />
     <MESSAGE value="XML and JSON export functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="XML and JSON export functionality" />
+    <MESSAGE value="Booking functionality" />
+    <MESSAGE value="Get recommendation functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Get recommendation functionality" />
   </component>
 </project>

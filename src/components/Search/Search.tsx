@@ -85,6 +85,10 @@ function Search() {
         { key: 'Home', text: 'Entire home' }
     ];
 
+    function _onClickRecommend() {
+        navigate("/recommendations");
+    }
+
     function _onChangeCity(
         _event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
         newValue?: string
@@ -166,6 +170,7 @@ function Search() {
 
     return (!isResults ?
         <div className="search-container">
+            <DefaultButton text="Get recommendations" onClick={_onClickRecommend}/>
             <Stack className="search-box">
                 <StackItem>
                     <h3>Where to?</h3>

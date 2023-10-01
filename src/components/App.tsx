@@ -12,6 +12,7 @@ import MyProfile from "./MyProfile/MyProfile";
 import ViewListing from "./ViewListing/ViewListing";
 import Messages from "./Messages/Messages";
 import NewMessage from "./Messages/NewMessage/NewMessage";
+import Recommendations from "./Recommendations/Recommendations";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Navigation/>
                 <Routes>
                     <Route path="/" Component={Search}/>
+                    <Route path="/recommendations" Component={Recommendations}/>
                     <Route path="/view/listing/:id" Component={ViewListing}/>
                     <Route path="/register" Component={Register}/>
                     <Route path="/myprofile" Component={MyProfile}/>

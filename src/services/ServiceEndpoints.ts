@@ -19,6 +19,7 @@ enum ServiceEndpoints {
 
     // Guest
     Book = "https://localhost:8443/api/guest/book",
+    FetchRecommendations = "https://localhost:8443/api/recommendation/recommend",
 
     // Search
     FetchResults = "https://localhost:8443/api/search/listings",
