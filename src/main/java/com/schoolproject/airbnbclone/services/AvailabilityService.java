@@ -31,4 +31,8 @@ public class AvailabilityService {
         }
     }
 
+    public void updateAvailability(Listing listing, LocalDate fromDate, LocalDate toDate) {
+        this.availabilityRepository.updateAvailabilities(listing.getId(), fromDate, toDate);
+    }
+
 }
