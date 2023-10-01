@@ -42,8 +42,9 @@ public class HostController {
     }
 
     @RequestMapping(value = "/listing/{id}", method = RequestMethod.GET)
-    public ResponseEntity<ListingCompleteDetails> getListing(@PathVariable Long id) {
-        return new ResponseEntity<>(this.listingService.getListing(id), HttpStatus.OK);
+    public ResponseEntity<ListingCompleteDetails> getListing(@PathVariable String id) {
+        Long longId = Long.parseLong(id);
+        return new ResponseEntity<>(this.listingService.getListing(longId), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/listing", method = RequestMethod.PUT)

@@ -60,7 +60,7 @@ public class MessageService {
         if (!this.messageRepository.findRecipientById(id).equals(authentication.getName()))
             throw new UserException(UserException.USER_ACTION_FORBIDDEN, HttpStatus.FORBIDDEN);
 
-        this.messageRepository.readMessage(id, authentication.getName());
+        this.messageRepository.readMessage(id);
     }
 
     public List<SentMessageDetails> getUserSentMessages(Authentication authentication, Integer page) {

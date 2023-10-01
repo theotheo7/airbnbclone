@@ -14,8 +14,8 @@ public interface MessageRepository extends JpaRepository<Message, Long>, PagingA
 
     @Transactional
     @Modifying
-    @Query("UPDATE Message m SET m.read = true WHERE m.id = :id AND m.recipient.username = :username ")
-    void readMessage(@Param("id") Long messageID, @Param("username") String username);
+    @Query("UPDATE Message m SET m.read = true WHERE m.id = :id")
+    void readMessage(@Param("id") Long id);
 
     @Query("SELECT m FROM Message m JOIN FETCH m.sender sender JOIN FETCH m.recipient recipient WHERE sender.username = :username")
     Page<Message> getSentMessages(@Param("username") String username, Pageable pageable);
