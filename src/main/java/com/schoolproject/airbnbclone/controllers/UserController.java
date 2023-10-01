@@ -62,7 +62,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{username}/messages", method = RequestMethod.POST)
+    @RequestMapping(value = "/messages/{username}", method = RequestMethod.POST)
     public ResponseEntity<Void> sendMessage(Authentication authentication,
                                             @PathVariable String username,
                                             @RequestBody MessagePosting messagePosting) {
@@ -71,7 +71,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/{username}/messages", method = RequestMethod.GET)
+    @RequestMapping(value = "/messages/{username}", method = RequestMethod.GET)
     public ResponseEntity<List<?>> getUserMessages(Authentication authentication,
                                                 @PathVariable String username,
                                                 @RequestParam(name = "sent") Boolean sent,
@@ -84,7 +84,7 @@ public class UserController {
             return new ResponseEntity<>(this.messageService.getUserReceivedMessages(authentication, page-1), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{username}/messages/{messageID}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/messages/{username}/{messageID}", method = RequestMethod.PUT)
     public ResponseEntity<Void> readUserMessage(Authentication authentication,
                                                 @PathVariable String username,
                                                 @PathVariable Long messageID) {
@@ -93,7 +93,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{username}/messages/{messageID}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/messages/{username}/{messageID}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteUserMessage(Authentication authentication,
                                                   @PathVariable String username,
                                                   @PathVariable Long messageID) {
